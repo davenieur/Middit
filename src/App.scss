@@ -1,0 +1,49 @@
+/* scss variables */
+$navigation-color: #FFFCF9;
+$background-color: #6D435A;
+$main-color: #FFFCF9;
+$extra-color: #FF6978;
+$gap-32px: 2rem;
+
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+#page{
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-areas: 
+    "head" "head"
+    "nav" "main"
+    "foot" "foot"
+  ;
+  gap: $gap-32px;
+  background-color: $background-color;
+}
+
+ul li {
+  list-style: none;
+}
+
+/* HEADER */
+#page > header{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  grid-area: head;
+  background-color: $navigation-color;
+  gap: 1rem;
+  height: 5rem;
+  padding: 0 4rem;
+ 
+}
+
+#page > nav{
+  grid-area: nav;
+  background-color: $navigation-color;
+
+}

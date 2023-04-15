@@ -4,7 +4,6 @@ export const NavBar = () =>{
  
     return( 
         <nav>
-            <h1>Middit</h1>
             <ul id="nav-list">
                 { 
                     topics.map(topic => {
