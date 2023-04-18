@@ -1,12 +1,32 @@
+import { useState } from 'react';
 import { NavBar } from '../components/NavBar/NavBar';
+import { SearchBar } from '../components/SearchBar/SearchBar';
+
 import '../App.scss';
-import { Header } from '../components/Header/Header';
+
+import { TopicGrid } from '../components/TopicGrid/TopicGrid';
 
 function App() {
+  const [ topic, setTopic ] = useState(null);
+  
+  const onChangeTopic = topic => {
+    setTopic(topic);
+  }
+  
   return (
     <section id = "page">
-      <Header />
-      
+       <header>
+          <ul>
+              <SearchBar 
+                  onChangeTopic = { onChangeTopic }
+              />
+          </ul>
+      </header>
+      <NavBar />
+      <TopicGrid 
+        topic = {topic}
+      />
+
     </section>
 
     

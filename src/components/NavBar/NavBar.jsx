@@ -6,9 +6,9 @@ export const NavBar = () =>{
         <nav>
             <ul id="nav-list">
                 { 
-                    topics.map(topic => {
+                    topics.map((topic, index )=> {
                         return(
-                            <div className='nav-topic'>
+                            <div className='nav-topic' key = {index}> 
                                 <a href={topic.url}>
                                     <li>{topic.name}</li>
                                 </a>

@@ -1,8 +1,8 @@
 /* scss variables */
-$navigation-color: #FFFCF9;
-$background-color: #6D435A;
-$main-color: #FFFCF9;
-$extra-color: #FF6978;
+$navigation-color: #dd3e9b;
+$background-color: #e4e4e4;
+$main-color: #ad8ac4;
+$extra-color: #28062b;
 $gap-32px: 2rem;
 
 
@@ -16,10 +16,11 @@ $gap-32px: 2rem;
   height: 100vh;
   display: grid;
   grid-template-areas: 
-    "head" "head"
-    "nav" "main"
-    "foot" "foot"
+    "head head"
+    "nav  main"
   ;
+  grid-template-columns: 10rem 1fr;
+  grid-template-rows: 5rem 1fr 6rem;
   gap: $gap-32px;
   background-color: $background-color;
 }
@@ -37,13 +38,24 @@ ul li {
   grid-area: head;
   background-color: $navigation-color;
   gap: 1rem;
-  height: 5rem;
   padding: 0 4rem;
- 
 }
 
 #page > nav{
+  display: flex;
+  flex-direction: row;
   grid-area: nav;
   background-color: $navigation-color;
+  padding: 0 2rem;
+}
 
+/* Main section */
+#main {
+  grid-area: main;
+  background-color: $main-color;
+  padding: 2rem;
+}
+
+#main > h2{
+  text-transform: capitalize;
 }
