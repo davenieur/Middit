@@ -1,11 +1,20 @@
-export const getGifs = async ( category ) => {
-    const url = `https://api.giphy.com/v1/gifs/search?api_key=GWzL23Op6fszOvcK8lbGFQ7wAeSUPaWn&q=${category}&limit=20`
+export const getPosts = async (topic) => {
+    const url = `https://www.reddit.com/search.json?q=${topic}`
     const response = await fetch( url );
-    const { data } = await response.json();
-    const gifs = data.map( img => ({
-        id: img.id,
-        title: img.title,
-        url: img.images.downsized_medium.url
+    let { data } = await response.json();
+    const { children } = data;
+    data = children.map( element => element.data );
+    console.log(data);
+    const posts = data.map(data => ({
+        id: data.id,
+        title: data.title,
+        author: data.author,
+        subredit: data.subreddit_name_prefixed,
+        text: data.selftext,
+        num_comments: data.num_comments,
+        url: data.url,
+        ups: data.ups,
+        downs: data.downs
     }));
-    return gifs;
+    return posts;
 }

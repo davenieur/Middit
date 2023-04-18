@@ -1,14 +1,18 @@
 /* scss variables */
-$navigation-color: #93E1D8;
-$background-color: #DDFFF7;
-$main-color: #028090;
-$extra-color: #05668D;
+$primary-color: #893168;
+$secondary-color: #EAEAEA;
+$tertiary-color: #FFC5F0;
 $gap-32px: 2rem;
 
-
+/* UNIVERSAL */
 *{
   margin: 0;
   padding: 0;
+}
+
+strong{
+  color: $tertiary-color;
+  
 }
 
 #page{
@@ -16,12 +20,12 @@ $gap-32px: 2rem;
   display: grid;
   grid-template-areas: 
     "head head"
-    "nav  main"
+    "nav  primary"
   ;
   grid-template-columns: 10rem 1fr;
   grid-template-rows: 5rem 1fr 6rem;
   gap: $gap-32px;
-  background-color: $background-color;
+  background-color: $secondary-color;
 }
 
 ul li {
@@ -35,26 +39,26 @@ ul li {
   align-items: center;
   justify-content: space-between;
   grid-area: head;
-  background-color: $navigation-color;
+  background-color: $primary-color;
   gap: 1rem;
   padding: 0 4rem;
 }
 
+
+/* NAV */
 #page > nav{
   display: flex;
   flex-direction: row;
   grid-area: nav;
-  background-color: $navigation-color;
+  background-color: $primary-color;
   padding: 0 2rem;
 }
 
-/* Main section */
+/* MAIN */
 main {
-  grid-area: main;
-  background-color: $main-color;
+  grid-area: primary;
+  background-color: $primary-color;
   padding: 2rem;
-}
-
-main > h2{
-  text-transform: capitalize;
+  color: $secondary-color;
+  
 }

@@ -4,7 +4,7 @@ export const Header = ( { onChangeTopic }) => {
     return(
         <header>
           <a href="/">
-            <img src="https://img.icons8.com/material/48/028090/reddit.png" alt="Reddit icon"/>
+            <img src="https://img.icons8.com/material/48/EAEAEA/reddit.png" alt="Reddit icon"/>
           </a>
           <SearchBar 
               onChangeTopic = { onChangeTopic }

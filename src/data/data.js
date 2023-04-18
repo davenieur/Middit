@@ -1,5 +1,3 @@
-import { AiFillHome } from 'react-icons';
-
 export const topics = [
     { 
         'name': 'Gaming',
