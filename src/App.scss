@@ -1,8 +1,8 @@
 /* scss variables */
-$navigation-color: #dd3e9b;
-$background-color: #e4e4e4;
-$main-color: #ad8ac4;
-$extra-color: #28062b;
+$navigation-color: #93E1D8;
+$background-color: #DDFFF7;
+$main-color: #028090;
+$extra-color: #05668D;
 $gap-32px: 2rem;
 
 
@@ -12,8 +12,7 @@ $gap-32px: 2rem;
 }
 
 #page{
-  width: 100vw;
-  height: 100vh;
+
   display: grid;
   grid-template-areas: 
     "head head"
@@ -50,12 +49,12 @@ ul li {
 }
 
 /* Main section */
-#main {
+main {
   grid-area: main;
   background-color: $main-color;
   padding: 2rem;
 }
 
-#main > h2{
+main > h2{
   text-transform: capitalize;
 }

@@ -1,36 +1,31 @@
 import { useState } from 'react';
+import { BrowserRouter as Router, Route } from "react-router-dom";
+
 import { NavBar } from '../components/NavBar/NavBar';
-import { SearchBar } from '../components/SearchBar/SearchBar';
+import { TopicGrid } from '../components/TopicGrid/TopicGrid';
+import { Header } from '../components/Header/Header';
 
 import '../App.scss';
 
-import { TopicGrid } from '../components/TopicGrid/TopicGrid';
-
-function App() {
+export default function App() {
   const [ topic, setTopic ] = useState(null);
-  
+
   const onChangeTopic = topic => {
     setTopic(topic);
   }
   
   return (
-    <section id = "page">
-       <header>
-          <ul>
-              <SearchBar 
-                  onChangeTopic = { onChangeTopic }
-              />
-          </ul>
-      </header>
+    <div id = "page">
+      <Header 
+        onChangeTopic = { onChangeTopic } 
+      />
       <NavBar />
       <TopicGrid 
         topic = {topic}
       />
 
-    </section>
+    </div>
 
     
   );
 }
-
-export default App;

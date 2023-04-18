@@ -1,13 +1,15 @@
-import { Topic } from "../Topic/Topic"
+import { TopicPost } from "../TopicPost/TopicPost"
 
 export const TopicGrid =( { topic } ) => {
 
     
     return(
-        <section id="main"> 
-             <h2> { topic }  </h2> 
-            <Topic />
+        <main> 
+            {/*SOLO PARA PROBAR*/}
+            <h2> { topic }  </h2> 
+            {/* Esto va dentro de un map */}
+            <TopicPost />
              
-        </section>
+        </main>
     )
 }

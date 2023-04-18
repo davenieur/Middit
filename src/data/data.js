@@ -1,17 +1,32 @@
+import { AiFillHome } from 'react-icons';
+
 export const topics = [
     { 
         'name': 'Gaming',
         'icon': 'url1',
-        'url': 'google.com'
     },
     {
-        'name': 'Tech',
+        'name': 'Sports',
         'icon': 'url2',
-        'url': 'google.com'
     },
     {
-        'name': 'Music',
+        'name': 'Business',
         'icon': 'url3',
-        'url': 'google.com'
+    },
+    {
+        'name': 'Crypto',
+        'icon': 'url3',
+    },
+    {
+        'name': 'Television',
+        'icon': 'url3',
+    },
+    {
+        'name': 'Celebrity',
+        'icon': 'url3',
+    },
+    {
+        'name': 'More topics',
+        'icon': 'url3',
     }
 ]
