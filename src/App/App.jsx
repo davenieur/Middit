@@ -8,7 +8,7 @@ import { Header } from '../components/Header/Header';
 import '../App.scss';
 
 export default function App() {
-  const [ topic, setTopic ] = useState(null);
+  const [ topic, setTopic ] = useState('home');
 
   const onChangeTopic = topic => {
     setTopic(topic);

@@ -1,4 +1,5 @@
-import { topics } from '../../data/data';
+import { topics } from '../../helpers/getIcons';
+import { NavItem } from '../NavItem/NavItem';
 
 
 export const NavBar = () =>{
@@ -6,19 +7,18 @@ export const NavBar = () =>{
     return( 
         <nav>
             <h4>FEEDS</h4>
-            <ul id="nav-list">
-                { 
-                    topics.map((topic, index )=> {
-                        return(
-                            <div className='nav-topic' key = {index}> 
-                                <a href={topic.url}>
-                                    <li>{topic.name}</li>
-                                </a>
-                            </div>  
-                        )   
-                    })
-                }
-            </ul>
+            <hr />
+            { 
+                topics.map((topic, index )=> {
+                    return(
+                        <NavItem 
+                            {... topic }
+                            key={index}
+                        />
+                    )   
+                })
+            }
+         
         </nav>
     )
 }

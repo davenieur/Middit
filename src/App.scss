@@ -1,8 +1,8 @@
 /* scss variables */
 $primary-color: #893168;
-$secondary-color: #EAEAEA;
-$tertiary-color: #FFC5F0;
-$gap-32px: 2rem;
+$secondary-color: #131200;
+$tertiary-color: #EAEAEA;
+$quaternary-color: #FFC5F0;
 
 /* UNIVERSAL */
 *{
@@ -11,21 +11,20 @@ $gap-32px: 2rem;
 }
 
 strong{
-  color: $tertiary-color;
-  
+  color: $quaternary-color;
 }
 
-#page{
 
+#page{
   display: grid;
   grid-template-areas: 
     "head head"
     "nav  primary"
   ;
-  grid-template-columns: 10rem 1fr;
+  grid-template-columns: 12rem 1fr;
   grid-template-rows: 5rem 1fr 6rem;
-  gap: $gap-32px;
-  background-color: $secondary-color;
+  gap: 2rem;
+  background-color: $tertiary-color;
 }
 
 ul li {
@@ -33,12 +32,15 @@ ul li {
 }
 
 /* HEADER */
-#page > header{
+header{
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   grid-area: head;
+  position: fixed;
+  width: 100%;
+  height: 5rem;
   background-color: $primary-color;
   gap: 1rem;
   padding: 0 4rem;
@@ -46,19 +48,87 @@ ul li {
 
 
 /* NAV */
-#page > nav{
+nav, nav ul{
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+
+nav{
+  width: 8rem;
+  height: 100%;
+  position: fixed;
+  top: 5rem;
+  left: 0;
+  grid-area: nav;
+  background-color: $secondary-color;
+  color: $quaternary-color;
+  padding: 2rem;
+}
+
+.nav-topic{
+  color: $tertiary-color;
   display: flex;
   flex-direction: row;
-  grid-area: nav;
-  background-color: $primary-color;
-  padding: 0 2rem;
+  text-decoration: none;
+  align-items: center;
+  
+}
+
+.nav-topic p{
+  padding-left: 1.5rem;
+  
 }
 
 /* MAIN */
 main {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
   grid-area: primary;
   background-color: $primary-color;
-  padding: 2rem;
   color: $secondary-color;
+}
+
+
+/* POST CARDS */
+.post-card{
+  display: grid;
+  grid-template-areas: 
+    "counter title"
+    "counter  content"
+  ;
+  grid-template-columns: 2rem 1fr;
+  grid-template-rows: 1fr 1fr;
+  padding: 1.5rem;
+  gap: 3rem;
+  background-color: $secondary-color;
+  color:$tertiary-color;
   
+}
+
+.post-counter{
+  grid-area: counter;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.post-title{
+  grid-area: title;
+}
+
+.post-content-container{
+  grid-area: content;
+}
+
+.post-info-container{
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  align-items: center;
 }

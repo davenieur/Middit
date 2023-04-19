@@ -1,21 +1,30 @@
+const color = 'EAEAEA';
+const size = '32';
+const queryParams = `${size}/${color}`;
 
-export const TopicPost = ( { topic } ) => {
+
+export const TopicPost = ( post ) => {
     return (
         <section className = "post-card">
             <div className="post-counter">
-                <img src="https://img.icons8.com/ios-filled/35/FFC5F0/up--v1.png"/> 
-                    <h4>Counter</h4>
-                <img src="https://img.icons8.com/ios-filled/35/FFC5F0/down--v1.png"/>
+                <img src={`https://img.icons8.com/glyph-neue/${queryParams}/long-arrow-up.png`}/> 
+                    <h4>{ post.ups + post.downs }</h4>
+                <img src={`https://img.icons8.com/glyph-neue/${queryParams}/long-arrow-down.png`}/>
             </div>
-            <h3>Title</h3>
-            <div className="post-image-container">   
-                <img src="https://i.pinimg.com/originals/23/08/0a/23080a24d9b26d5345b99ac8efe92f98.jpg" />
-            </div>    
-            <div className="info-container">
-                <p>Posted by <strong>name</strong></p>
-                <p>7 hours ago</p>
-                <img src="https://img.icons8.com/ios-filled/50/FFC5F0/comments.png"/>
-                <p>232</p>
+            <h3 className="post-name">
+                { post.title }
+            </h3>
+            <div className="´post-content-container">
+                <div className="post-image-container">   
+                    
+                </div>  
+                <div className="post-info-container">
+                    <p>Posted by <strong>{ post.author }</strong></p>
+                    <p>7 hours ago</p>
+                    {/* COMMENTS COMPONENT */}
+                    <img src={`https://img.icons8.com/glyph-neue/${queryParams}/comments--v1.png`}/>
+                    <p>{ post.num_comments }</p>
+                </div>  
             </div>
         </section>
     );
