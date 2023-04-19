@@ -3,7 +3,7 @@ import { getPosts } from '../helpers/getPosts';
 
 export const useFetchPosts = topic => {
     const [ posts, setPosts ] = useState([]);
-    const [ isLoading, setIsLoading ] = useState( true )
+    const [ isLoading, setIsLoading ] = useState( true );
 
     const getPostInfo = async() => {
         const newPosts = await getPosts( topic );
@@ -13,7 +13,7 @@ export const useFetchPosts = topic => {
     
     useEffect( () => {
         getPostInfo();
-    });
+    }, [ topic ]);
 
 
     return {

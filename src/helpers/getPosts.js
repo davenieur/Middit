@@ -8,13 +8,16 @@ export const getPosts = async (topic) => {
         id: data.id,
         title: data.title,
         author: data.author,
-        subredit: data.subreddit_name_prefixed,
-        text: data.body_html,
+        subreddit: data.subreddit_name_prefixed,
+        created: data.created,
+        is_video: data.is_video,
+        video_src: data.is_video ? data.media['reddit_video'].fallback_url : false, 
+        img_src: data.url,
         num_comments: data.num_comments,
-        url: data.url,
+        commentsLink: data.permalink,
         ups: data.ups,
         downs: data.downs
     }));
-    
+    console.log(posts);
     return posts;
 }

@@ -8,7 +8,7 @@ import { Header } from '../components/Header/Header';
 import '../App.scss';
 
 export default function App() {
-  const [ topic, setTopic ] = useState('home');
+  const [ topic, setTopic ] = useState('popular');
 
   const onChangeTopic = topic => {
     setTopic(topic);
@@ -19,7 +19,9 @@ export default function App() {
       <Header 
         onChangeTopic = { onChangeTopic } 
       />
-      <NavBar />
+      <NavBar 
+        onChangeTopic = { onChangeTopic }
+      />
       <TopicGrid 
         topic = {topic}
       />

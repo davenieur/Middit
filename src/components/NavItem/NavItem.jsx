@@ -1,10 +1,9 @@
-export const NavItem = ( { name, icon }, url ) => {
+export const NavItem = ( { name, icon, handleClick } ) => {
     return(
-        
-        <a className='nav-topic' href={url}>
+        <button type="button" className='nav-topic' onClick={e => handleClick(name)}>
             <img src={icon} alt={name} />
             <p>{name}</p>
-        </a>
+        </button>
       
     )
 }

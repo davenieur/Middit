@@ -7,10 +7,10 @@ export const TopicGrid =( { topic } ) => {
     return(
         <main> 
             
-            { topic === "home" ? "" : <h2> { topic } </h2> } 
+            { topic === "popular" ? "" : <h2> { topic.toUpperCase() } </h2> } 
 
             {
-                isLoading && ( <h2>Cargando...</h2> )
+                isLoading && ( <h2>Loading...</h2> )
             }
 
             {

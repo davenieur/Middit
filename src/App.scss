@@ -4,6 +4,16 @@ $secondary-color: #131200;
 $tertiary-color: #EAEAEA;
 $quaternary-color: #FFC5F0;
 
+
+@font-face {
+  font-family: 'Chivo Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/chivomono/v5/mFThWbgRxKvF_Z5eQMO9qRMrJJrnKNtC3D7hr5fdIJl70w.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+}
+
 /* UNIVERSAL */
 *{
   margin: 0;
@@ -21,7 +31,7 @@ strong{
     "head head"
     "nav  primary"
   ;
-  grid-template-columns: 12rem 1fr;
+  grid-template-columns: 14rem 1fr;
   grid-template-rows: 5rem 1fr 6rem;
   gap: 2rem;
   background-color: $tertiary-color;
@@ -44,6 +54,7 @@ header{
   background-color: $primary-color;
   gap: 1rem;
   padding: 0 4rem;
+  z-index: 10;
 }
 
 
@@ -56,7 +67,7 @@ nav, nav ul{
 
 
 nav{
-  width: 8rem;
+  width: 10rem;
   height: 100%;
   position: fixed;
   top: 5rem;
@@ -73,7 +84,12 @@ nav{
   flex-direction: row;
   text-decoration: none;
   align-items: center;
-  
+  background-color: $primary-color;
+  width: auto;
+  height: 3rem;
+  padding: 0 1rem;
+  cursor: pointer;
+  border-color: $tertiary-color;
 }
 
 .nav-topic p{
@@ -95,18 +111,32 @@ main {
 
 /* POST CARDS */
 .post-card{
+  height: auto;
   display: grid;
   grid-template-areas: 
-    "counter title"
+    "counter top"
     "counter  content"
+    "counter info"
   ;
-  grid-template-columns: 2rem 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1rem 1fr;
+  justify-content: center;
   padding: 1.5rem;
-  gap: 3rem;
+  gap: 2rem;
   background-color: $secondary-color;
   color:$tertiary-color;
-  
+  text-align: justify;
+
+}
+
+.post-top{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  grid-area: top;
+}
+
+.post-top h5{
+  color: $quaternary-color;
 }
 
 .post-counter{
@@ -118,17 +148,29 @@ main {
   gap: 1rem;
 }
 
-.post-title{
-  grid-area: title;
-}
-
 .post-content-container{
   grid-area: content;
+  display: flex;
+  height: 100%;
+}
+
+.post-content-container img{
+  grid-area: content;
+  display: flex;
+  height: 100%;
 }
 
 .post-info-container{
+  grid-area: info;
   display: flex;
   flex-direction: row;
   gap: 2rem;
+  align-items: center;
+}
+
+.post-comments{
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
   align-items: center;
 }
