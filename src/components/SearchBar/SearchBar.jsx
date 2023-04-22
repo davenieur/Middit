@@ -2,7 +2,7 @@ import { useState } from "react";
 import PropTypes from 'prop-types';
 
 export const SearchBar = ({ onChangeTopic }) => {
-    const [ inputValue, setInputValue ] = useState('home');
+    const [ inputValue, setInputValue ] = useState('');
     
     const onInputChange = e => {
         setInputValue(e.target.value);
@@ -11,6 +11,7 @@ export const SearchBar = ({ onChangeTopic }) => {
     const onSubmit = e => {
         e.preventDefault();
         onChangeTopic(inputValue.trim());
+        setInputValue('');
     }
 
     return (
@@ -20,6 +21,7 @@ export const SearchBar = ({ onChangeTopic }) => {
                     type="text"
                     placeholder="Search topic"
                     onChange = { onInputChange }
+                    value = {inputValue}
                 /> 
             </form>
         </div>

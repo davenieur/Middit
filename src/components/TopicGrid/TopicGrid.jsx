@@ -1,27 +1,37 @@
 import { useFetchPosts } from "../../hooks/useFetchPosts";
 import { TopicPost } from "../TopicPost/TopicPost"
+import { SearchBar } from "../SearchBar/SearchBar";
 
-export const TopicGrid =( { topic } ) => {
+export const TopicGrid =( { topic, onChangeTopic } ) => {
     const { posts, isLoading } = useFetchPosts(topic);
     
     return(
         <main> 
-            
-            { topic === "popular" ? "" : <h2> { topic.toUpperCase() } </h2> } 
+            <SearchBar 
+              onChangeTopic = { onChangeTopic }
+            />
 
-            {
-                isLoading ? 
-                    ( <h2>Loading...</h2> ) :    
-                    posts.map( post => {
-                        return(
-                            // Return topic's posts and the post object
-                            <TopicPost 
-                                key = { post.id } 
-                                { ...post}
-                            />
-                        )
-                    })
-            }        
+
+            <div className="main__name-container">
+                <h2>{ topic.toUpperCase() }</h2>
+            </div>
+           
+           {    isLoading ?  <h2>Loading...</h2>  : (
+                    <div className="topic-grid-container">
+                        {
+                            posts.map( post => {
+                                return(
+                                    // Return topic's posts and the post object
+                                    <TopicPost 
+                                        key = { post.id } 
+                                        { ...post}
+                                    />
+                                )
+                            })
+                        }  
+                    </div>
+                )  
+            }
         </main>
     )
 }

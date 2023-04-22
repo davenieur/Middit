@@ -16,14 +16,13 @@ export default function App() {
   
   return (
     <div id = "page">
-      <Header 
-        onChangeTopic = { onChangeTopic } 
-      />
+      <Header />
       <NavBar 
         onChangeTopic = { onChangeTopic }
       />
       <TopicGrid 
         topic = {topic}
+        onChangeTopic = { onChangeTopic } 
       />
 
     </div>
