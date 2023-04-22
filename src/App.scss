@@ -96,6 +96,7 @@ main {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  padding: 5rem;
 }
 
 .post{
@@ -106,9 +107,9 @@ main {
     "counter  content"
     "counter info"
   ;
-  grid-template-columns: 20% 80%;
+  grid-template-columns: 10rem 80%;
   justify-content: center;
-  padding: 2rem;
+  padding: 2rem 0;
   gap: 2rem;
   
   color: $tertiary-color;
