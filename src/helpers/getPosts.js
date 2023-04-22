@@ -1,5 +1,5 @@
 export const getPosts = async (topic) => {
-    const url = `https://www.reddit.com/search.json?q=${topic}`
+    const url = `https://www.reddit.com/search.json?q=${topic.toLowerCase()}`
     const response = await fetch( url );
     let { data } = await response.json();
     const { children } = data;
@@ -18,6 +18,5 @@ export const getPosts = async (topic) => {
         ups: data.ups,
         downs: data.downs
     }));
-    console.log(posts);
     return posts;
 }

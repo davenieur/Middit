@@ -10,8 +10,8 @@ import '../App.scss';
 export default function App() {
   const [ topic, setTopic ] = useState('popular');
 
-  const onChangeTopic = topic => {
-    setTopic(topic);
+  const onChangeTopic = newTopic => {
+    setTopic(newTopic);
   }
   
   return (

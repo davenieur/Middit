@@ -10,23 +10,18 @@ export const TopicGrid =( { topic } ) => {
             { topic === "popular" ? "" : <h2> { topic.toUpperCase() } </h2> } 
 
             {
-                isLoading && ( <h2>Loading...</h2> )
-            }
-
-            {
-                posts.map( post => {
-                    return(
-                        // Return topic's posts and the post object
-                        <TopicPost 
-                            key = { post.id } 
-                            { ...post}
-                        />
-                    )
-                })
-
-            }
-           
-             
+                isLoading ? 
+                    ( <h2>Loading...</h2> ) :    
+                    posts.map( post => {
+                        return(
+                            // Return topic's posts and the post object
+                            <TopicPost 
+                                key = { post.id } 
+                                { ...post}
+                            />
+                        )
+                    })
+            }        
         </main>
     )
 }

@@ -26,9 +26,6 @@ export const topics = [
     {
         'name': 'Celebrity',
         'icon': `https://img.icons8.com/glyph-neue/${queryParams}/filled-star.png`,
-    },
-    {
-        'name': 'More topics',
-        'icon': `https://img.icons8.com/glyph-neue/${queryParams}/circled-chevron-down.png`,
     }
+    
 ]

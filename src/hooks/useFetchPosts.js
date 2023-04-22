@@ -5,13 +5,14 @@ export const useFetchPosts = topic => {
     const [ posts, setPosts ] = useState([]);
     const [ isLoading, setIsLoading ] = useState( true );
 
-    const getPostInfo = async() => {
-        const newPosts = await getPosts( topic );
-        setPosts(newPosts);
-        setIsLoading(false);
-    }
-    
     useEffect( () => {
+        setIsLoading(true);
+        const getPostInfo = async() => {
+            const newPosts = await getPosts( topic );
+            setPosts(newPosts);
+            setIsLoading(false);
+        }
+
         getPostInfo();
     }, [ topic ]);
 
