@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export const SearchBar = ({ onChangeTopic }) => {
     const [ inputValue, setInputValue ] = useState('');
-    
+   
     const onInputChange = e => {
         setInputValue(e.target.value);
     }
@@ -16,7 +16,9 @@ export const SearchBar = ({ onChangeTopic }) => {
 
     return (
         <div className="search-container"> 
-            <form onSubmit={onSubmit}>
+            
+            
+            <form onSubmit={onSubmit} className="search__form-container">
                 <input
                     type="text"
                     placeholder="Search topic"
@@ -24,6 +26,9 @@ export const SearchBar = ({ onChangeTopic }) => {
                     value = {inputValue}
                 /> 
             </form>
+
+            <button className="btn btn--search" onClick={onSubmit}> </button>
+            
         </div>
         
     )

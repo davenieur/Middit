@@ -1,6 +1,7 @@
 import { useFetchPosts } from "../../hooks/useFetchPosts";
 import { TopicPost } from "../TopicPost/TopicPost"
 import { SearchBar } from "../SearchBar/SearchBar";
+import { Loading } from "../Loading/Loading";
 
 export const TopicGrid =( { topic, onChangeTopic } ) => {
     const { posts, isLoading } = useFetchPosts(topic);
@@ -16,7 +17,7 @@ export const TopicGrid =( { topic, onChangeTopic } ) => {
                 <h2>{ topic.toUpperCase() }</h2>
             </div>
            
-           {    isLoading ?  <h2>Loading...</h2>  : (
+           {    isLoading ?  (<Loading />)  : (
                     <div className="topic-grid-container">
                         {
                             posts.map( post => {

@@ -10,6 +10,12 @@ $quaternary-color: #FFC5F0;
   gap: $gap-number;
 }
 
+@mixin flex-single-element {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -26,7 +32,7 @@ strong {
     "head head"
     "nav  main"
   ;
-  grid-template-columns: 20rem 1fr;
+  grid-template-columns: 16rem 1fr;
   grid-template-rows: 5rem 1fr;
   gap: 2rem;
   background-color: $tertiary-color;
@@ -36,7 +42,7 @@ header {
   grid-area: head;
   position: fixed;
   @include flex-display(row, 2);
-
+  
   align-items: center;
   width: 100%;
   padding: 1rem;
@@ -52,17 +58,15 @@ header {
 }
 
 
-
 /*NAV*/
 
 nav {
-  width: 20rem;
+  grid-area: "nav";
   height: 100vh;
   padding: 3rem;
-  grid-area: nav;
   position: fixed;
   top: 5rem;
-  display: flex;
+  font-size: 1rem;
   background-color: $secondary-color;
   z-index: 1;
   @include flex-display(column, 2rem);
@@ -77,16 +81,16 @@ nav {
 .btn {
   @include flex-display(row, 2rem);
   text-decoration: none;
-  width: auto;
-  height: 3rem;
-  padding: 1rem;
   cursor: pointer;
-  background-color: $primary-color;
-  color: $tertiary-color;
+  
 }
 
 .btn--nav {
-  flex-direction: row;
+  background-color: $primary-color;
+  color: $tertiary-color;
+  height: 3rem;
+  padding: 1rem;
+  
   align-items: center;
   border-radius: 5px;
   border: $tertiary-color .1rem solid;
@@ -104,43 +108,85 @@ nav {
   }
 }
 
+.btn--search {
+  @include flex-single-element;
+  width: 2.5rem;
+  height: 100%;
+  align-items: center;
+  border: none;
+  animation: moveInLeft 1s ease-out;
+  transition: 1s;
+  background-color: $primary-color;
+
+  background-image: url('https://img.icons8.com/ios-glyphs/32/EAEAEA/search--v1.png');
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &:hover{
+    background-color: $quaternary-color;
+    background-image: url('https://img.icons8.com/ios-glyphs/32/131200/search--v1.png');
+  }
+}
+
 
 main {
-  padding: 3rem;
   grid-area: main;
   @include flex-display(column, 2rem);
-
+  padding: 1rem 2rem;
   animation: moveInUp .5s ease-in;
-
 }
 
 .main__name-container {
-  width: 20rem;
-  height: auto;
   color: $secondary-color;
+  font-size: 1rem;
+
 }
 
+.search-container{
+  flex-shrink: 1;
+  width: 30%;
+  height: 2.5rem;
+  @include flex-display(row, 0rem);
+  background-color: $primary-color;
+  
 
+  .search__form-container{
+    @include flex-single-element;
+    border-bottom: $primary-color .1rem solid;
+    width: 93%;
+    height: 100%;
+
+  }
+
+}
+
+input, input:hover, input:focus {
+  border: none;
+}
 
 input {
-  height: 3rem;
-  width: 100%;
-  padding: 1rem;
-  border: $secondary-color .2rem solid;
-  border-radius: .5rem;
-  font-size: 1.2rem;
-  background-color: $quaternary-color;
   color: $secondary-color;
+  font-size: 1.2rem;
+  color: $tertiary-color;
+  width: 93%;
+  padding: .1rem;
+  background-color: $primary-color;
 }
 
-input:hover {
-  background-color: $primary-color;
-  color: $tertiary-color
+input:focus {
+  outline: none;
 }
+
+::placeholder { 
+  color: $quaternary-color;
+  opacity: 0.8;
+}
+
+
 
 .topic-grid-container{
-  @include flex-display(row, 2rem);
-  flex-wrap: wrap;
+  @include flex-display(column, 2rem);
+
   animation: moveInRight .5s ease-in;
   align-items: center;
   justify-content: center;
@@ -149,7 +195,7 @@ input:hover {
 
 .post{
   height: auto;
-  width: 40rem;
+  width: 80%;
   display: grid;
   grid-template-areas: 
     "counter top"
@@ -167,6 +213,7 @@ input:hover {
 }
 
 .post__counter-container{
+  font-size: 1rem;
   grid-area: counter;
   @include flex-display(column, 2rem);
   align-items: center;
