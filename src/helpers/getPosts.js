@@ -8,7 +8,7 @@ export const getPosts = async (topic) => {
         id: post.id,
         title: post.title,
         author: post.author,
-        subreddit: post.subreddit_name_prefixed,
+        subreddit: post.subreddit,
         created: post.created,
         is_video: post.is_video,
         video_src: post.is_video ? post.media['reddit_video'].fallback_url : false, 

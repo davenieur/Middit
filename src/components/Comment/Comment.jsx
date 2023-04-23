@@ -1,7 +1,9 @@
 import { utcToDate } from "../../helpers/utcToDate";
+import PropTypes from 'prop-types';
 
-export const Comment = props => {
-    const { author, body, created, replies, score} = props;
+
+export const Comment = ({ author, body, created, replies, score }) => {
+    
     console.log(replies);
     // const { comments, isLoading } = useFetchComments(subreddit, postId);
 
@@ -31,3 +33,11 @@ export const Comment = props => {
 
     )
 } 
+
+Comment.propTypes = {
+    author: PropTypes.string.isRequired,
+    body: PropTypes.string.isRequired,
+    created: PropTypes.number.isRequired,
+    replies: PropTypes.array.isRequired,
+    score: PropTypes.number.isRequired
+}

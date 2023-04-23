@@ -1,6 +1,8 @@
 import { useFetchComments } from "../../hooks/useFetchComments";
 import { Comment } from "../Comment/Comment";
 import { Loading } from "../Loading/Loading";
+import PropTypes from 'prop-types';
+
 
 export const CommentsGrid =( { subreddit, postId } ) => {
     const { comments, isLoading } = useFetchComments(subreddit, postId);
@@ -23,4 +25,9 @@ export const CommentsGrid =( { subreddit, postId } ) => {
          
         </div>
     )
+}
+
+CommentsGrid.propTypes = {
+    subreddit: PropTypes.string.isRequired,
+    postId: PropTypes.string.isRequired
 }

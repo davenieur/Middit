@@ -1,6 +1,7 @@
 import { useFetchPosts } from "../../hooks/useFetchPosts";
 import { TopicPost } from "../TopicPost/TopicPost"
 import { Loading } from "../Loading/Loading";
+import PropTypes from 'prop-types';
 
 export const TopicGrid =( { topic } ) => {
     const { posts, isLoading } = useFetchPosts(topic);
@@ -29,4 +30,8 @@ export const TopicGrid =( { topic } ) => {
             }
         </main>
     )
+}
+
+TopicGrid.propTypes = {
+    topic: PropTypes.string.isRequired
 }

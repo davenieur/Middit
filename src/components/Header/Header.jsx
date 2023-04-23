@@ -1,4 +1,5 @@
 import { SearchBar } from "../SearchBar/SearchBar";
+import PropTypes from 'prop-types';
 
 export const Header = ( { onChangeTopic } ) => {
     return(
@@ -13,3 +14,8 @@ export const Header = ( { onChangeTopic } ) => {
         </header>
     );
 }
+
+Header.propTypes = {
+  onChangeTopic: PropTypes.func.isRequired
+}
+

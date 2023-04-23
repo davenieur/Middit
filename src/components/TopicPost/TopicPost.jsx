@@ -1,9 +1,10 @@
 import { utcToDate } from "../../helpers/utcToDate";
 import { CommentsGrid } from "../CommentsGrid/CommentsGrid";
 import { checkIfIsImage } from "../../helpers/checkImages";
+import PropTypes from 'prop-types';
 
-export const TopicPost = props => {
-    const { id, title, author, subreddit, created, is_video, video_src, img_src, num_comments, score } = props;
+
+export const TopicPost = ( { id, title, author, subreddit, created, is_video, video_src, img_src, num_comments, score } ) => {
 
     return (
         <section className = "post">
@@ -21,8 +22,7 @@ export const TopicPost = props => {
                 <p className="post__content-text">
                     { title }
                 </p>
-             
-
+                
                 {
                     is_video ? ( 
                         <div className="post__content-video">  
@@ -61,4 +61,17 @@ export const TopicPost = props => {
             }
         </section>
     );
+}
+
+TopicPost.propTypes = {
+    id: PropTypes.string.isRequired, 
+    title: PropTypes.string.isRequired, 
+    author: PropTypes.string.isRequired, 
+    subreddit: PropTypes.string.isRequired, 
+    created: PropTypes.number.isRequired, 
+    is_video: PropTypes.bool.isRequired, 
+    video_src: PropTypes.string.isRequired, 
+    img_src: PropTypes.string.isRequired, 
+    num_comments: PropTypes.number.isRequired, 
+    score: PropTypes.number.isRequired
 }

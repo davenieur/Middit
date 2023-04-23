@@ -1,4 +1,5 @@
-import { useState } from "react"
+import { useState } from "react";
+import PropTypes from 'prop-types';
 
 export const  NavButton = ( { topic, handleClick, iconName } ) => {
     const [ iconColor, setIconColor ] = useState('EAEAEA');
@@ -23,4 +24,10 @@ export const  NavButton = ( { topic, handleClick, iconName } ) => {
             <p>{ topic }</p>
         </button>
     )
+}
+
+NavButton.propTypes = {
+    topic: PropTypes.string.isRequired,
+    handleClick: PropTypes.func.isRequired,
+    iconName: PropTypes.string.isRequired
 }
