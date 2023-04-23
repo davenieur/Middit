@@ -1,44 +1,42 @@
 import { utcToDate } from "../../helpers/utcToDate";
 import { CommentsGrid } from "../CommentsGrid/CommentsGrid";
+import { checkIfIsImage } from "../../helpers/checkImages";
 
-export const checkIfIsImage = (imgSrc) => {
-    return (imgSrc.match(/\.(jpeg|jpg|gif|png)$/) != null)
-}
+export const TopicPost = props => {
+    const { id, title, author, subreddit, created, is_video, video_src, img_src, num_comments, score } = props;
 
-export const TopicPost = ( post ) => {
     return (
         <section className = "post">
             <div className="post__counter-container">
                 <img src='https://img.icons8.com/glyph-neue/32/FFC5F0/long-arrow-up.png' alt="Vote up button"/> 
-                    <h4>{ post.score }</h4>
+                    <h4>{ score }</h4>
                 <img src='https://img.icons8.com/glyph-neue/32/FFC5F0/long-arrow-down.png' alt="Vote down button"/>
             </div>
             <div className="post__top-container">
                 <a href="#" >
-                    { post.subreddit}
+                    { subreddit}
                 </a>
             </div>
             <div className="post__content-container">
-                <div className="post__content-text-container">
-                    <p className="post__content-text">
-                        { post.title }
-                    </p>
-                </div>
+                <p className="post__content-text">
+                    { title }
+                </p>
+             
 
                 {
-                    post.is_video ? ( 
+                    is_video ? ( 
                         <div className="post__content-video">  
                             <video controls width="350">
-                                <source src={post.video_src} type="video/mp4" />
+                                <source src={video_src} type="video/mp4" />
                                 Your browser does not support the video tag
                             </video>
                         </div> 
                     ) : null
                 }    
                 {
-                    checkIfIsImage(post.img_src) ? (
+                    checkIfIsImage(img_src) ? (
                         <div className="post__content-img">  
-                            <img  src={post.img_src} alt="" />
+                            <img  src={img_src} alt="" />
                         </div> 
                     ) : null
                 }
@@ -46,20 +44,21 @@ export const TopicPost = ( post ) => {
             </div>
 
             <div className="post__info-container">
-                <p>Posted by <strong>{ post.author }</strong></p>
-                <p><strong>{utcToDate(post.created)}</strong> hours ago</p>
+                <p>Posted by <strong>{ author }</strong></p>
+                <p><strong>{utcToDate(created)}</strong> days ago</p>
              
                 <button  type='button' className="btn btn--comments">
-                    <p>{post.num_comments}</p>
-                </button>
-                    
-        
-                {/* <CommentsGrid 
-                    subreddit={post.subreddit}
-                    postId={post.id}btn--comments
-                /> */}
+                    <p>{num_comments}</p>
+                </button>    
             </div>  
-        
+
+            
+            { <CommentsGrid 
+                    subreddit={subreddit}
+                    postId={id}
+                    
+                /> 
+            }
         </section>
     );
 }

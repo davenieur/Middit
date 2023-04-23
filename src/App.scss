@@ -39,6 +39,13 @@ strong {
   color: $quaternary-color;
 }
 
+a {
+  text-decoration: none;
+  color: $quaternary-color;
+  cursor: pointer;
+}
+
+
 #page{
   display: grid;
   grid-template-areas: 
@@ -61,7 +68,6 @@ header {
   padding: 1rem;
   background-color: $primary-color;
   z-index: 2;
-  animation: moveInUp .7s ease-in
 }
 
 .header__logo-box {
@@ -83,7 +89,6 @@ nav {
   background-color: $secondary-color;
   z-index: 1;
   @include flex-display(column, 2rem);
-  animation: moveInLeft .5s ease-in;
 
   h5 {
     color: $tertiary-color;
@@ -210,16 +215,14 @@ input:focus {
 
 .topic-grid-container{
   @include flex-display(column, 2rem);
-
   animation: moveInRight .5s ease-in;
-  align-items: center;
-  justify-content: center;
+
 }
 
 
 .post{
   height: auto;
-  width: 40rem;
+  width: auto;
   font-size: 1rem;
   display: grid;
   grid-template-areas: 
@@ -232,9 +235,14 @@ input:focus {
   align-items: center;
   padding: 2rem;
   gap: 2rem;
-  
+  transition: 1s;
   color: $tertiary-color;
   background-color: $secondary-color;
+
+  &:hover{
+    box-shadow: 0 0 2rem .5rem $primary-color;
+    cursor: pointer;
+  }
 }
 
 .post__counter-container{
@@ -247,18 +255,8 @@ input:focus {
 
 .post__top-container {
   grid-area: top;
-
-  a {
-    text-decoration: none;
-    color: $quaternary-color;
-    cursor: pointer;
-  }
- 
 }
 
-.post__content-container {
-  @include flex-display(column, 2rem);
-}
 
 .post__info-container {
   grid-area: info;
@@ -270,7 +268,6 @@ input:focus {
   }
 }
 
-
 .post__content-img{
   width: auto;
   height: auto;
@@ -280,6 +277,39 @@ input:focus {
   }
 }
 
+/* Comments */
+.comments__grid-container{
+  @include flex-display(column, 1rem);
+  padding: 2rem;
+  background-color: $secondary-color;
+}
+
+.comment {
+  text-align: justify;
+  width: 40%;
+  height: auto;
+  padding: 2rem;
+  background-color: $primary-color;
+  color: $tertiary-color;
+}
+
+.comment__top-container{
+  grid-area: top;
+  @include flex-display(row, 2rem);
+
+  width: auto;
+  
+}
+
+.comment_content-container {
+  grid-area: comment;
+  width: auto;
+  font-size: 1rem;
+}
+
+
+
+/* KEY FRAMES */
 
 @keyframes moveInRight {
   0% {
