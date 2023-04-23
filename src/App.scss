@@ -16,6 +16,19 @@ $quaternary-color: #FFC5F0;
   justify-content: center;
 }
 
+@mixin button-background($url, $position){
+  background-image: url($url);
+  background-repeat: no-repeat;
+  background-position: $position;
+}
+
+@mixin change-color-icon-hover($color, $url){
+  &:hover{
+    background-color: $color;
+    background-image: url($url);
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -82,24 +95,22 @@ nav {
   @include flex-display(row, 2rem);
   text-decoration: none;
   cursor: pointer;
-  
+  border-radius: 5px;
+  height: 3rem;
+  padding: 1rem;
+  align-items: center;
+  transition: 1s;
 }
 
 .btn--nav {
   background-color: $primary-color;
   color: $tertiary-color;
-  height: 3rem;
-  padding: 1rem;
-  
-  align-items: center;
-  border-radius: 5px;
   border: $tertiary-color .1rem solid;
   animation: moveInLeft 1s ease-out;
   font-weight: 600;
-  transition: 1s;
+
   &:hover {
     background-color: $tertiary-color;
-    transition: 1s;
     color: $secondary-color;
     border: $primary-color .1rem solid;
   }
@@ -112,19 +123,33 @@ nav {
   @include flex-single-element;
   width: 2.5rem;
   height: 100%;
-  align-items: center;
   border: none;
   animation: moveInLeft 1s ease-out;
-  transition: 1s;
-  background-color: $primary-color;
+  background-color: $tertiary-color;
+  @include button-background('https://img.icons8.com/ios-glyphs/32/893168/search--v1.png', center);
+  @include change-color-icon-hover($quaternary-color, 'https://img.icons8.com/ios-glyphs/32/131200/search--v1.png');
+}
 
-  background-image: url('https://img.icons8.com/ios-glyphs/32/EAEAEA/search--v1.png');
-  background-repeat: no-repeat;
-  background-position: center;
+.btn--comments {
+  @include flex-single-element;
+  align-items: center;
+  height: 2rem;
+  padding: .5rem;
+  justify-content: left;
+  border: none;
+  color: $tertiary-color;
+  transition: 1s;
+  background-color: $secondary-color;
+  @include button-background('https://img.icons8.com/glyph-neue/32/FFC5F0/comments--v1.png', left);
+  @include change-color-icon-hover($quaternary-color, 'https://img.icons8.com/glyph-neue/32/893168/comments--v1.png');
 
   &:hover{
-    background-color: $quaternary-color;
-    background-image: url('https://img.icons8.com/ios-glyphs/32/131200/search--v1.png');
+    color: $secondary-color;
+    font-weight: bold;
+  }
+
+  p {
+    margin-left: 2rem;
   }
 }
 
@@ -147,12 +172,11 @@ main {
   width: 30%;
   height: 2.5rem;
   @include flex-display(row, 0rem);
-  background-color: $primary-color;
+  background-color: $tertiary-color;
   
 
   .search__form-container{
     @include flex-single-element;
-    border-bottom: $primary-color .1rem solid;
     width: 93%;
     height: 100%;
 
@@ -167,10 +191,10 @@ input, input:hover, input:focus {
 input {
   color: $secondary-color;
   font-size: 1.2rem;
-  color: $tertiary-color;
+  color: $secondary-color;
   width: 93%;
   padding: .1rem;
-  background-color: $primary-color;
+  background-color: $tertiary-color;
 }
 
 input:focus {
@@ -178,7 +202,7 @@ input:focus {
 }
 
 ::placeholder { 
-  color: $quaternary-color;
+  color: $secondary-color;
   opacity: 0.8;
 }
 
@@ -195,7 +219,8 @@ input:focus {
 
 .post{
   height: auto;
-  width: 80%;
+  width: 40rem;
+  font-size: 1rem;
   display: grid;
   grid-template-areas: 
     "counter top"
@@ -213,11 +238,11 @@ input:focus {
 }
 
 .post__counter-container{
-  font-size: 1rem;
   grid-area: counter;
   @include flex-display(column, 2rem);
   align-items: center;
-  padding: 1rem;
+  justify-content: center;
+
 }
 
 .post__top-container {
@@ -232,19 +257,29 @@ input:focus {
 }
 
 .post__content-container {
-  grid-area: content;
-  border-bottom: $quaternary-color .1rem solid;
+  @include flex-display(column, 2rem);
 }
 
 .post__info-container {
   grid-area: info;
-  @include flex-display(row, 2rem)
+  @include flex-display(row, 2rem);
+  align-items: center;
+
+  p{
+    font-size: 1rem;
+  }
 }
 
-.post__comments-container{
-  @include flex-display(row, 1rem);
-  align-items: center;
+
+.post__content-img{
+  width: auto;
+  height: auto;
+  img {
+    width: 100%;
+    height: auto;
+  }
 }
+
 
 @keyframes moveInRight {
   0% {

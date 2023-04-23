@@ -4,19 +4,17 @@ export const getPosts = async (topic) => {
     let { data } = await response.json();
     const { children } = data;
     data = children.map( element => element.data );
-    const posts = data.map(data => ({
-        id: data.id,
-        title: data.title,
-        author: data.author,
-        subreddit: data.subreddit_name_prefixed,
-        created: data.created,
-        is_video: data.is_video,
-        video_src: data.is_video ? data.media['reddit_video'].fallback_url : false, 
-        img_src: data.url,
-        num_comments: data.num_comments,
-        commentsLink: data.permalink,
-        ups: data.ups,
-        downs: data.downs
+    const posts = data.map(post => ({
+        id: post.id,
+        title: post.title,
+        author: post.author,
+        subreddit: post.subreddit_name_prefixed,
+        created: post.created,
+        is_video: post.is_video,
+        video_src: post.is_video ? post.media['reddit_video'].fallback_url : false, 
+        img_src: post.url,
+        num_comments: post.num_comments,
+        score: post.score
     }));
     return posts;
 }
