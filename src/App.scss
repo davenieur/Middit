@@ -35,6 +35,10 @@ $quaternary-color: #FFC5F0;
   box-sizing: border-box;
 }
 
+body {
+  font-size: 1rem;
+}
+
 strong {
   color: $quaternary-color;
 }
@@ -49,8 +53,8 @@ a {
 #page{
   display: grid;
   grid-template-areas: 
-    "head head"
-    "nav  main"
+    "head head head"
+    "nav  posts subreddits "
   ;
   grid-template-columns: 16rem 1fr;
   grid-template-rows: 5rem 1fr;
@@ -80,12 +84,12 @@ header {
 /*NAV*/
 
 nav {
-  grid-area: "nav";
+  grid-area: nav;
   height: 100vh;
   padding: 3rem;
   position: fixed;
   top: 5rem;
-  font-size: 1rem;
+
   background-color: $secondary-color;
   z-index: 1;
   @include flex-display(column, 2rem);
@@ -159,8 +163,21 @@ nav {
 }
 
 
+.visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+
+/* MAIN */
+
 main {
-  grid-area: main;
+  grid-area: posts;
   @include flex-display(column, 2rem);
   padding: 1rem 2rem;
   animation: moveInUp .5s ease-in;
@@ -168,9 +185,9 @@ main {
 
 .main__name-container {
   color: $secondary-color;
-  font-size: 1rem;
-
 }
+
+/* SEARCH */
 
 .search-container{
   flex-shrink: 1;
@@ -178,15 +195,11 @@ main {
   height: 2.5rem;
   @include flex-display(row, 0rem);
   background-color: $tertiary-color;
-  
-
   .search__form-container{
     @include flex-single-element;
     width: 93%;
     height: 100%;
-
   }
-
 }
 
 input, input:hover, input:focus {
@@ -195,7 +208,6 @@ input, input:hover, input:focus {
 
 input {
   color: $secondary-color;
-  font-size: 1.2rem;
   color: $secondary-color;
   width: 93%;
   padding: .1rem;
@@ -211,20 +223,24 @@ input:focus {
   opacity: 0.8;
 }
 
-
+/*MAIN*/
 
 .topic-grid-container{
   @include flex-display(column, 2rem);
   animation: moveInRight .5s ease-in;
+  justify-content: center;
+  align-items: center
 
 }
 
 
+/*POST*/
+
 .post{
   height: auto;
-  width: auto;
-  font-size: 1rem;
+  width: 70%;
   display: grid;
+  border-radius: 2rem;
   grid-template-areas: 
     "counter top"
     "counter  content"
@@ -262,10 +278,11 @@ input:focus {
   grid-area: info;
   @include flex-display(row, 2rem);
   align-items: center;
+}
 
-  p{
-    font-size: 1rem;
-  }
+
+.post__content-container{
+  @include flex-display(column, 2rem)
 }
 
 .post__content-img{
@@ -277,12 +294,16 @@ input:focus {
   }
 }
 
+
 /* Comments */
-.comments__grid-container{
-  @include flex-display(column, 1rem);
+.comments-container {
+  width: 50%;
   padding: 2rem;
-  background-color: $secondary-color;
+  transition: all .75s;
+  background-color: $primary-color;
 }
+
+
 
 .comment {
   text-align: justify;
@@ -293,19 +314,7 @@ input:focus {
   color: $tertiary-color;
 }
 
-.comment__top-container{
-  grid-area: top;
-  @include flex-display(row, 2rem);
 
-  width: auto;
-  
-}
-
-.comment_content-container {
-  grid-area: comment;
-  width: auto;
-  font-size: 1rem;
-}
 
 
 

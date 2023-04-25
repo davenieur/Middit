@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { utcToDate } from "../../helpers/utcToDate";
 import { CommentsGrid } from "../CommentsGrid/CommentsGrid";
 import { checkIfIsImage } from "../../helpers/checkImages";
@@ -5,6 +6,13 @@ import PropTypes from 'prop-types';
 
 
 export const TopicPost = ( { id, title, author, subreddit, created, is_video, video_src, img_src, num_comments, score } ) => {
+    const [ visible, setVisible ] = useState(false);
+
+
+    const handleClick = e => {
+        visible ? setVisible(false) : setVisible(true);
+    }
+ 
 
     return (
         <section className = "post">
@@ -14,7 +22,7 @@ export const TopicPost = ( { id, title, author, subreddit, created, is_video, vi
                 <img src='https://img.icons8.com/glyph-neue/32/FFC5F0/long-arrow-down.png' alt="Vote down button"/>
             </div>
             <div className="post__top-container">
-                <a href="#" >
+                <a href={`https://www.reddit.com/${subreddit}/comments/${id}`} >
                     { subreddit}
                 </a>
             </div>
@@ -36,7 +44,7 @@ export const TopicPost = ( { id, title, author, subreddit, created, is_video, vi
                 {
                     checkIfIsImage(img_src) ? (
                         <div className="post__content-img">  
-                            <img  src={img_src} alt="" />
+                            <img  src="{img_src}" alt="" />
                         </div> 
                     ) : null
                 }
@@ -46,19 +54,10 @@ export const TopicPost = ( { id, title, author, subreddit, created, is_video, vi
             <div className="post__info-container">
                 <p>Posted by <strong>{ author }</strong></p>
                 <p><strong>{utcToDate(created)}</strong> days ago</p>
-             
-                <button  type='button' className="btn btn--comments">
+                <button  type='button' className="btn btn--comments" onClick={handleClick}>
                     <p>{num_comments}</p>
                 </button>    
-            </div>  
-
-            
-            { <CommentsGrid 
-                    subreddit={subreddit}
-                    postId={id}
-                    
-                /> 
-            }
+            </div> 
         </section>
     );
 }

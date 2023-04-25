@@ -3,11 +3,6 @@ import PropTypes from 'prop-types';
 
 
 export const Comment = ({ author, body, created, replies, score }) => {
-    
-    console.log(replies);
-    // const { comments, isLoading } = useFetchComments(subreddit, postId);
-
-
     return(
         <div className="comment">
             <div className="comment__top-container">
@@ -20,8 +15,17 @@ export const Comment = ({ author, body, created, replies, score }) => {
                 <p>{body}</p>
             </div>
             {
-                replies ? (
+                Object.entries(replies).length > 0 ? (
                     <div className="comment_replies-container">
+                        { 
+                            replies.map( ( reply, index ) => {
+                                // return(
+                                //     <Comment 
+                                //         { ...reply }
+                                //     />
+                                // )
+                            })
+                        } 
                        
 
                     </div>

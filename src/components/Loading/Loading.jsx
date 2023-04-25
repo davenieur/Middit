@@ -6,6 +6,6 @@ export const Loading = ({ searchValue }) => {
     )
 } 
 
-Loading.propTypes = {
-    searchValue: PropTypes.string.isRequired
-}
+// Loading.propTypes = {
+//     searchValue: PropTypes.string.isRequired
+// }

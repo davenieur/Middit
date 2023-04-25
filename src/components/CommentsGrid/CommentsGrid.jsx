@@ -1,28 +1,29 @@
+import { useState } from "react";
 import { useFetchComments } from "../../hooks/useFetchComments";
 import { Comment } from "../Comment/Comment";
 import { Loading } from "../Loading/Loading";
 import PropTypes from 'prop-types';
 
 
-export const CommentsGrid =( { subreddit, postId } ) => {
-    const { comments, isLoading } = useFetchComments(subreddit, postId);
+export const CommentsGrid =( { subreddit, id } ) => {
+    const { isLoading, comments } = useFetchComments( subreddit, id );
     
+
     return(
        
-        <div className="comments__grid-container">
-            {
-                comments.map( (comment, index) => {
+        <div className= "comments-container">
+            <h4>Comments</h4>
+           { 
+                comments.map(comment => {
                     return(
                         <Comment 
-                            key = {index}
-                        
-                            {... comment}
-                        
+                            {...comment}
                         />
                     )
+                    
                 })
-            }            
-         
+            }
+
         </div>
     )
 }
