@@ -113,11 +113,12 @@ nav {
 
 .btn--nav {
   background-color: $primary-color;
+  width: 11rem;
   color: $tertiary-color;
   border: $tertiary-color .1rem solid;
   animation: moveInLeft 1s ease-out;
   font-weight: 600;
-
+  
   &:hover {
     background-color: $tertiary-color;
     color: $secondary-color;

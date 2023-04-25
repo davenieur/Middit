@@ -1,5 +1,6 @@
 import { useState } from "react";
 import PropTypes from 'prop-types';
+import { NavLink } from "react-router-dom";
 
 export const  NavButton = ( { topic, handleClick, iconName } ) => {
     const [ iconColor, setIconColor ] = useState('EAEAEA');
@@ -13,16 +14,25 @@ export const  NavButton = ( { topic, handleClick, iconName } ) => {
     }
     
     return (
-        <button 
-            type='button' 
-            className='btn btn--nav' 
-            onMouseOver={e => handleOnMouseOver()}
-            onMouseOut={e => handleOnMouseOut()}
-            onClick={e => handleClick(topic)}
+        <NavLink
+            to={`/${topic.toLowerCase()}`}
+            activeClassName="highlighted"
         >
-            <img src={`https://img.icons8.com/glyph-neue/${iconColor}/32/${iconName}`} alt={topic}/>
-            <p>{ topic }</p>
-        </button>
+            <button 
+                type='button' 
+                className='btn btn--nav' 
+                onMouseOver={e => handleOnMouseOver()}
+                onMouseOut={e => handleOnMouseOut()}
+                onClick={e => handleClick(topic)}
+            >
+                <img src={`https://img.icons8.com/glyph-neue/${iconColor}/32/${iconName}`} alt={topic}/>
+                <p>{ topic }</p>
+            </button>
+
+
+        </NavLink>
+
+        
     )
 }
 

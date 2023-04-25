@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 
 import { NavBar } from '../components/NavBar/NavBar';
 import { TopicGrid } from '../components/TopicGrid/TopicGrid';
@@ -15,19 +15,18 @@ export default function App() {
   }
   
   return (
-    <div id = "page">
-      <Header 
-        onChangeTopic = { onChangeTopic }
-      />
-      <NavBar 
-        onChangeTopic = { onChangeTopic }
-      />
-      <TopicGrid 
-        topic = {topic}
-      />
-
-    </div>
-
-    
+    <Router>
+      <div id = "page">
+        <Header 
+          onChangeTopic = { onChangeTopic }
+        />
+        <NavBar 
+          onChangeTopic = { onChangeTopic }
+        />
+        <TopicGrid 
+          topic = {topic}
+        />
+      </div>
+    </Router>
   );
 }
