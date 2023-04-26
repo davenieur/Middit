@@ -54,9 +54,9 @@ a {
   display: grid;
   grid-template-areas: 
     "head head head"
-    "nav  posts subreddits "
+    "nav  content subreddits "
   ;
-  grid-template-columns: 16rem 1fr;
+  grid-template-columns: 16rem 1fr 10rem;
   grid-template-rows: 5rem 1fr;
   gap: 2rem;
   background-color: $tertiary-color;
@@ -163,22 +163,14 @@ nav {
   }
 }
 
-
-.visible {
-  visibility: visible;
-  opacity: 1;
-}
-
-.hidden {
-  visibility: hidden;
-  opacity: 0;
-}
-
-
 /* MAIN */
 
 main {
-  grid-area: posts;
+  grid-area: content;
+}
+
+.topics-page {
+  
   @include flex-display(column, 2rem);
   padding: 1rem 2rem;
   animation: moveInUp .5s ease-in;
@@ -302,17 +294,6 @@ input:focus {
   padding: 2rem;
   transition: all .75s;
   background-color: $primary-color;
-}
-
-
-
-.comment {
-  text-align: justify;
-  width: 40%;
-  height: auto;
-  padding: 2rem;
-  background-color: $primary-color;
-  color: $tertiary-color;
 }
 
 

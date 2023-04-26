@@ -16,7 +16,7 @@ export const  NavButton = ( { topic, handleClick, iconName } ) => {
     return (
         <NavLink
             to={`/${topic.toLowerCase()}`}
-            activeClassName="highlighted"
+            
         >
             <button 
                 type='button' 

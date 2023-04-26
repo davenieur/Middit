@@ -1,16 +1,15 @@
-import { useState } from "react";
+
+import { useNavigate } from "react-router-dom";
 import { utcToDate } from "../../helpers/utcToDate";
-import { CommentsGrid } from "../CommentsGrid/CommentsGrid";
 import { checkIfIsImage } from "../../helpers/checkImages";
 import PropTypes from 'prop-types';
 
 
 export const TopicPost = ( { id, title, author, subreddit, created, is_video, video_src, img_src, num_comments, score } ) => {
-    const [ visible, setVisible ] = useState(false);
-
+    const navigate = useNavigate();
 
     const handleClick = e => {
-        visible ? setVisible(false) : setVisible(true);
+        navigate(`/${subreddit}/${id}`);
     }
  
 
@@ -23,7 +22,7 @@ export const TopicPost = ( { id, title, author, subreddit, created, is_video, vi
             </div>
             <div className="post__top-container">
                 <a href={`https://www.reddit.com/${subreddit}/comments/${id}`} >
-                    { subreddit}
+                    {subreddit}
                 </a>
             </div>
             <div className="post__content-container">
@@ -54,6 +53,8 @@ export const TopicPost = ( { id, title, author, subreddit, created, is_video, vi
             <div className="post__info-container">
                 <p>Posted by <strong>{ author }</strong></p>
                 <p><strong>{utcToDate(created)}</strong> days ago</p>
+
+
                 <button  type='button' className="btn btn--comments" onClick={handleClick}>
                     <p>{num_comments}</p>
                 </button>    

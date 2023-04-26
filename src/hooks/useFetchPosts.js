@@ -11,10 +11,15 @@ export const useFetchPosts = topic => {
     useEffect( () => {
         setIsLoading(true);
         const getPostInfo = async() => {
-            const newPosts = await getPosts( topic );
-            setPosts(newPosts);
-            setIsLoading(false);
-            navigate(`/${topic.toLowerCase()}`)
+            try{
+                const newPosts = await getPosts( topic );
+                setPosts(newPosts);
+                setIsLoading(false);
+                navigate(`/${topic.toLowerCase()}`)
+            }catch(e){
+                console.log("No results")
+            }
+            
         }
 
         getPostInfo();

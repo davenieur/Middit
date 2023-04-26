@@ -1,13 +1,13 @@
+import { useParams } from 'react-router-dom';
 import { useFetchPosts } from "../../hooks/useFetchPosts";
 import { TopicPost } from "../TopicPost/TopicPost"
 import { Loading } from "../Loading/Loading";
-import PropTypes from 'prop-types';
 
-export const TopicGrid =( { topic } ) => {
+export const TopicPage =() => {
+    const { topic } = useParams();
     const { posts, isLoading } = useFetchPosts(topic);
-    
     return(
-        <main> 
+        <main className='topics-page'> 
             <div className="main__name-container">
                 <h2>{ topic.toUpperCase() }</h2>
             </div>
@@ -30,8 +30,4 @@ export const TopicGrid =( { topic } ) => {
             }
         </main>
     )
-}
-
-TopicGrid.propTypes = {
-    topic: PropTypes.string.isRequired
 }
