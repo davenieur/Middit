@@ -2,6 +2,7 @@ const color = 'EAEAEA';
 const size = '32';
 const queryParams = `${size}/${color}`;
 
+// Importing the navbar buttons icons
 export const topics = [
     { 
         'name': 'Gaming',

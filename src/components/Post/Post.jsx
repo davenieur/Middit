@@ -5,13 +5,12 @@ import { checkIfIsImage } from "../../helpers/checkImages";
 import PropTypes from 'prop-types';
 
 
-export const TopicPost = ( { id, title, author, subreddit, created, is_video, video_src, img_src, num_comments, score } ) => {
+export const Post = ( { id, title, author, subreddit, created, is_video, video_src, img_src, num_comments, score } ) => {
     const navigate = useNavigate();
 
     const handleClick = e => {
         navigate(`/${subreddit}/${id}`);
     }
- 
 
     return (
         <section className = "post">
@@ -63,7 +62,7 @@ export const TopicPost = ( { id, title, author, subreddit, created, is_video, vi
     );
 }
 
-TopicPost.propTypes = {
+Post.propTypes = {
     id: PropTypes.string.isRequired, 
     title: PropTypes.string.isRequired, 
     author: PropTypes.string.isRequired, 

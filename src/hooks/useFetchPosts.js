@@ -1,33 +1,24 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
-
 import { getPosts } from '../helpers/getPosts';
 
 export const useFetchPosts = topic => {
-    const navigate = useNavigate();
     const [ posts, setPosts ] = useState([]);
-    const [ isLoading, setIsLoading ] = useState( true );
+    const [ loadingPosts, setLoadingPosts ] = useState( true );
 
     useEffect( () => {
-        setIsLoading(true);
-        const getPostInfo = async() => {
-            try{
-                const newPosts = await getPosts( topic );
-                setPosts(newPosts);
-                setIsLoading(false);
-                navigate(`/${topic.toLowerCase()}`)
-            }catch(e){
-                console.log("No results")
-            }
-            
+        setLoadingPosts(true);
+        const getPostsInfo = async() => {
+            const newPosts = await getPosts( topic );
+            setPosts(newPosts);
+            setLoadingPosts(false);  
         }
 
-        getPostInfo();
+        getPostsInfo();
     }, [ topic ]);
 
 
     return {
         posts: posts,
-        isLoading: isLoading
+        loadingPosts: loadingPosts
     }
 }

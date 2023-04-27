@@ -3,6 +3,7 @@ $primary-color: #893168;
 $secondary-color: #131200;
 $tertiary-color: #EAEAEA;
 $quaternary-color: #FFC5F0;
+$border-radius: 2rem;
 
 @mixin flex-display($direction, $gap-number){
   display: flex;
@@ -29,6 +30,14 @@ $quaternary-color: #FFC5F0;
   }
 }
 
+@mixin hover(){
+  transition: 1s;
+  &:hover{
+    box-shadow: 0 0 2rem .5rem $primary-color;
+    cursor: pointer;
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -49,14 +58,22 @@ a {
   cursor: pointer;
 }
 
+h2 {
+  color: $tertiary-color;
+  background-color: $primary-color;
+  padding: 2rem;
+  width: 60%;
+  text-align: center;
+  border-radius: $border-radius;
+}
 
 #page{
   display: grid;
   grid-template-areas: 
-    "head head head"
-    "nav  content subreddits "
+    "head head "
+    "nav  content "
   ;
-  grid-template-columns: 16rem 1fr 10rem;
+  grid-template-columns: 16rem 1fr;
   grid-template-rows: 5rem 1fr;
   gap: 2rem;
   background-color: $tertiary-color;
@@ -104,7 +121,7 @@ nav {
   @include flex-display(row, 2rem);
   text-decoration: none;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: $border-radius;
   height: 3rem;
   padding: 1rem;
   align-items: center;
@@ -166,19 +183,26 @@ nav {
 /* MAIN */
 
 main {
+  @include flex-display(column, 2rem);
+  padding: 2rem;
+  justify-content: center;
+  align-items: center;
   grid-area: content;
+  
+  
 }
 
+
+
 .topics-page {
-  
   @include flex-display(column, 2rem);
   padding: 1rem 2rem;
   animation: moveInUp .5s ease-in;
+ 
 }
 
-.main__name-container {
-  color: $secondary-color;
-}
+
+
 
 /* SEARCH */
 
@@ -216,8 +240,6 @@ input:focus {
   opacity: 0.8;
 }
 
-/*MAIN*/
-
 .topic-grid-container{
   @include flex-display(column, 2rem);
   animation: moveInRight .5s ease-in;
@@ -231,9 +253,9 @@ input:focus {
 
 .post{
   height: auto;
-  width: 70%;
+  width: 50%;
   display: grid;
-  border-radius: 2rem;
+  border-radius: $border-radius;
   grid-template-areas: 
     "counter top"
     "counter  content"
@@ -244,14 +266,11 @@ input:focus {
   align-items: center;
   padding: 2rem;
   gap: 2rem;
-  transition: 1s;
+  
   color: $tertiary-color;
   background-color: $secondary-color;
 
-  &:hover{
-    box-shadow: 0 0 2rem .5rem $primary-color;
-    cursor: pointer;
-  }
+  @include hover;
 }
 
 .post__counter-container{
@@ -289,11 +308,44 @@ input:focus {
 
 
 /* Comments */
+
+.comments-page{
+  width: 95%;
+  
+}
+
 .comments-container {
-  width: 50%;
-  padding: 2rem;
+  @include flex-display(column, 2rem);
+  grid-area: comments;
+  width: 100%;
+  padding: 2rem ;
   transition: all .75s;
-  background-color: $primary-color;
+
+}
+
+.comment{
+  display: grid;
+  grid-template-areas: 
+    "info info"
+    "content content"
+    "replies replies"
+  ;
+  gap: 1rem;
+  padding: 2rem;
+  background-color: $secondary-color;
+  color: $tertiary-color;
+  border-left:$quaternary-color .2rem solid;
+  border-radius: $border-radius;
+}
+
+.comment__info-container {
+  @include flex-display(row, 2rem);
+  grid-area: info;
+}
+
+.comment_content-container{
+  grid-area:  content;
+  text-align: justify;
 }
 
 

@@ -1,24 +1,13 @@
-// Fech the comments of a specific post using it's id
-export const getComments = async ( subreddit, id  ) => {
+
+
+// Fech the info of a specific post using it's id
+export const getPost = async ( subreddit, id  ) => {
     const url = `https://www.reddit.com/r/${subreddit}/comments/${id}/.json`;
     try{
         const response = await fetch(url);
         let data = await response.json();
-        let commentsData = data[1].data;
-        let { children } = commentsData;
-        commentsData = children.map( element => element.data ); 
-        // The last element it's a count, that's why I removed it
-        commentsData = commentsData.slice(0, commentsData.length-1);
-        const comments = commentsData.map(comment => ({
-            author: comment.author,
-            body: comment.body,
-            created: comment.created,
-            replies: typeof comment.replies === "string" ? [] : comment.replies.data.children.filter(element => element.kind === 't1'),
-            score: comment.score
-        }));
-        
         let postData = data[0].data;
-        children = postData.children;
+        let children = postData.children;
         postData = children.map( element => element.data );
         postData = postData[0];
         const post = {
@@ -34,8 +23,7 @@ export const getComments = async ( subreddit, id  ) => {
             score: postData.score
         };
         
-        return [ post, comments ];
- 
+        return post;
     }catch(e){
         throw new Error('No response');
     }

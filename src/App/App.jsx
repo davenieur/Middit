@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { CommentsPage } from '../components/CommentsPage/CommentsPage';
+import { CommentsPage } from '../components/pages/CommentsPage/CommentsPage';
 import { NavBar } from '../components/NavBar/NavBar';
 import { TopicPage } from '../components/TopicPage/TopicPage';
 import { Header } from '../components/Header/Header';
-import { NotFound } from '../components/NotFound/NotFound';
+import { NotFound } from '../components/pages/NotFound/NotFound';
 import '../App.scss';
 
 export default function App() {
@@ -25,21 +25,11 @@ export default function App() {
         />
 
         <Routes>
-            
-            <Route 
-              path="/:subreddit/:id"
-              element= {<CommentsPage />}
-            />
-
-            <Route 
-              path="/:topic" 
-              element= {<TopicPage />}
-            />
-
-            <Route
-              path="*"
-              element={<NotFound />}
-            />
+            <Route path="/">
+              <Route path="notfound" element={<NotFound />}/>
+              <Route path=":topic" element= {<TopicPage />}/>
+              <Route path=":subreddit/:id" element= {<CommentsPage />}/>
+            </Route>
         </Routes>
         
         

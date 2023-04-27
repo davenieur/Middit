@@ -1,11 +1,7 @@
-import PropTypes from 'prop-types';
 
-export const Loading = ({ searchValue }) => {
+
+export const Loading = () => {
     return(
-        <h2>Loading...</h2>
+        <h3>Loading...</h3>
     )
 } 
-
-// Loading.propTypes = {
-//     searchValue: PropTypes.string.isRequired
-// }

@@ -1,24 +1,25 @@
 import { useParams } from 'react-router-dom';
 import { useFetchPosts } from "../../hooks/useFetchPosts";
-import { TopicPost } from "../TopicPost/TopicPost"
+import { Post } from "../Post/Post"
 import { Loading } from "../Loading/Loading";
 
 export const TopicPage =() => {
     const { topic } = useParams();
-    const { posts, isLoading } = useFetchPosts(topic);
+    const { posts,  loadingPosts } = useFetchPosts(topic);
+
     return(
         <main className='topics-page'> 
-            <div className="main__name-container">
-                <h2>{ topic.toUpperCase() }</h2>
-            </div>
+            
+            <h2>{ topic.toUpperCase() }</h2>
            
-           {    isLoading ?  (<Loading />)  : (
+           
+           {     loadingPosts ?  (<Loading />)  : (
                     <div className="topic-grid-container">
                         {
                             posts.map( post => {
                                 return(
                                     // Return topic's posts and the post object
-                                    <TopicPost 
+                                    <Post 
                                         key = { post.id } 
                                         { ...post}
                                     />
