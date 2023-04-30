@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 
 
 export const Post = ( { id, title, author, subreddit, created, is_video, video_src, img_src, num_comments, score, commentsVisible } ) => {
-    console.log(img_src)
     const navigate = useNavigate();
     
     const handleClick = e => {

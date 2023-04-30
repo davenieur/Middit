@@ -19,7 +19,6 @@ export const TopicPage =() => {
                 !loadingPosts ? (
                     posts.length === 0 ? (  
                         <NotFound />
-
                     )       
                     : (
                         <main> 

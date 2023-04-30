@@ -6,14 +6,10 @@ export const NotFound = ({ inputValue }) => {
 
     return(
         <main className='notFound'>
-            
-            <img src="https://img.icons8.com/ios-filled/250/FFC5F0/sad.png"/>
+            <img src="https://img.icons8.com/ios-filled/250/FFC5F0/sad.png" alt="sad face"/>
             <h1>NO RESULTS FOUND</h1>
             <SearchBar />
-            
             <button className="btn go-back" onClick={() => navigate(-1)}>GO BACK</button>
         </main>
-        
-
     )
 }
