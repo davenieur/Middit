@@ -2,15 +2,14 @@ import { utcToDate } from "../../helpers/utcToDate";
 import PropTypes from 'prop-types';
 
 
-export const Comment = ({ author, body, created, replies }) => {
-    
+export const Comment = ({ author, body, created, replies, isReply }) => {
     return(
-        <div className="comment">
+        <div className={`${isReply ? "reply" : "comment"}`}>
             <div className="comment__info-container">
-                <strong>
+                <h4>
                     {author}
-                </strong>
-                <p><strong>{utcToDate(created)}</strong> days ago</p>
+                </h4>
+                <strong>{utcToDate(created)} days ago</strong>
             </div>
             <div className="comment_content-container">
                 <p>{body}</p>
@@ -24,22 +23,17 @@ export const Comment = ({ author, body, created, replies }) => {
                                 return(
                                     <Comment 
                                         { ...reply.data }
-                                        
+                                        key = {index}
+                                        isReply = {true}
                                     />
                                 )
                             })
-
                             : null
                         } 
-                       
-
                     </div>
                 ) : null
             }
-            
-
         </div>
-
     )
 } 
 

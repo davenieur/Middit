@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import PropTypes from 'prop-types';
 
-export const SearchBar = ({ onChangeTopic }) => {
+export const SearchBar = () => {
     const [ inputValue, setInputValue ] = useState('');
     const navigate = useNavigate();
 
@@ -12,7 +11,6 @@ export const SearchBar = ({ onChangeTopic }) => {
 
     const onSubmit = e => {
         e.preventDefault();
-        onChangeTopic(inputValue.trim());
         setInputValue('');
         navigate(`/${inputValue}`);
     }
@@ -31,8 +29,4 @@ export const SearchBar = ({ onChangeTopic }) => {
         </div>  
     )
 
-}
-
-SearchBar.propTypes = {
-    onChangeTopic: PropTypes.func.isRequired
 }

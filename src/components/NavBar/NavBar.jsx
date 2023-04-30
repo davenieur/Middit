@@ -1,11 +1,12 @@
+import { useNavigate } from "react-router-dom";
 import { topics } from '../../helpers/getIcons';
 import { NavButton } from '../NavButton/NavButton';
-import PropTypes from 'prop-types';
 
-export const NavBar = ({ onChangeTopic }) =>{
+export const NavBar = () =>{
+    const navigate = useNavigate();
 
     const handleClick = topic => {
-        onChangeTopic(topic);
+        navigate(`/${topic}`);
     }
 
     return( 
@@ -29,8 +30,4 @@ export const NavBar = ({ onChangeTopic }) =>{
             }
         </nav>
     )
-}
-
-NavBar.propTypes = {
-    onChangeTopic: PropTypes.func.isRequired
 }

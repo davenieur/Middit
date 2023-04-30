@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
-import { useFetchComments } from "../../../hooks/useFetchComments";
-import { Comment } from "../../Comment/Comment";
-import { Post } from "../../Post/Post";
-import { Loading } from "../../Loading/Loading";
+import { useFetchComments } from "../../hooks/useFetchComments";
+import { Comment } from "../Comment/Comment";
+import { Post } from "../Post/Post";
+import { Loading } from "../Loading/Loading";
 
 
 export const CommentsPage =() => {
@@ -14,7 +14,7 @@ export const CommentsPage =() => {
            {     loadingContent ?  (<Loading />)  : (
                     <main> 
                         <Post {...post}/>
-                        <h2>Comments</h2>
+                        <h1>Comments</h1>
                         <div className= "comments-container">
                             
                             { 
@@ -23,6 +23,8 @@ export const CommentsPage =() => {
                                         <Comment 
                                             key = {index}
                                             {...comment}
+                                            commentVisible = {false}
+                                            isReply = {false}
                                         />
                                     )
                                     

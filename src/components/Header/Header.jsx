@@ -1,22 +1,13 @@
 import { Link } from "react-router-dom";
 import { SearchBar } from "../SearchBar/SearchBar";
-import PropTypes from 'prop-types';
 
-export const Header = ( { onChangeTopic } ) => {
+export const Header =  () => {
     return(
         <header>
           <Link to="/popular" className="header__logo-box">
             <img src="https://img.icons8.com/material/48/EAEAEA/reddit.png" alt="Reddit icon" className="header__logo"/>
           </Link>
-
-          <SearchBar 
-              onChangeTopic = { onChangeTopic }
-          />
+          <SearchBar />
         </header>
     );
 }
-
-Header.propTypes = {
-  onChangeTopic: PropTypes.func.isRequired
-}
-

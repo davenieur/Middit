@@ -1,9 +1,11 @@
-// Fech the comments of a specific post using it's id
+// Fech the comments of a specific post using it's id and post info
 export const getComments = async ( subreddit, id  ) => {
     const url = `https://www.reddit.com/r/${subreddit}/comments/${id}/.json`;
     try{
         const response = await fetch(url);
         let data = await response.json();
+
+        /*GET COMMENTS*/
         let commentsData = data[1].data;
         let { children } = commentsData;
         commentsData = children.map( element => element.data ); 
@@ -17,6 +19,7 @@ export const getComments = async ( subreddit, id  ) => {
             score: comment.score
         }));
         
+        /*GET POST INFO*/
         let postData = data[0].data;
         children = postData.children;
         postData = children.map( element => element.data );

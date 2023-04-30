@@ -1,5 +1,5 @@
 // Fetch some posts of a specific topic 
-export const getPosts = async (topic) => {
+export const fetchPosts = async (topic) => {
     const url = `https://www.reddit.com/search.json?q=${topic.toLowerCase()}`;
     const response = await fetch( url );
     let { data } = await response.json();

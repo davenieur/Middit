@@ -16,7 +16,6 @@ export const  NavButton = ( { topic, handleClick, iconName } ) => {
     return (
         <NavLink
             to={`/${topic.toLowerCase()}`}
-            
         >
             <button 
                 type='button' 
@@ -28,11 +27,7 @@ export const  NavButton = ( { topic, handleClick, iconName } ) => {
                 <img src={`https://img.icons8.com/glyph-neue/${iconColor}/32/${iconName}`} alt={topic}/>
                 <p>{ topic }</p>
             </button>
-
-
         </NavLink>
-
-        
     )
 }
 

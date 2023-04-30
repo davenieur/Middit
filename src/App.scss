@@ -2,19 +2,30 @@
 $primary-color: #893168;
 $secondary-color: #131200;
 $tertiary-color: #EAEAEA;
-$quaternary-color: #e935b9;
+$quaternary-color: #FFC5F0;
 $border-radius: 2rem;
-$gap: 2rem;
-$padding: 2rem;
+$global-padding: 2rem;
+$global-gap: 2rem;
+
+@mixin flex-config($direction, $gap){
+  display: flex;
+  gap: $gap;
+  flex-direction: $direction;
+}
 
 @mixin fixed-components($area,$direction,$color){
   grid-area: $area;
   position: fixed;
   background-color: $color;
-  display: flex;
-  flex-direction: $direction;
-  gap: $gap;
-  padding: $padding;
+  padding: $global-padding;
+  @include flex-config($direction, $global-gap);
+}
+
+@mixin hover-items($color){
+  transition: 1s;
+  &:hover{
+    box-shadow: 0 0 2rem .5rem $color;
+  }
 }
 
 @mixin button-background($url, $position){
@@ -30,14 +41,7 @@ $padding: 2rem;
   }
 }
 
-@mixin hover(){
-  transition: 1s;
-  &:hover{
-    box-shadow: 0 0 2rem .5rem $primary-color;
-    cursor: pointer;
-  }
-}
-
+/*GLOBAL*/
 * {
   margin: 0;
   padding: 0;
@@ -46,51 +50,290 @@ $padding: 2rem;
 
 #page{
   display: grid;
-  gap: 2rem;
+  gap: $global-gap;
   grid-template-areas: 
     "head head"
     "nav content";
-  grid-template-columns: 10rem 1fr;
+  grid-template-columns: 16rem 1fr;
   grid-template-rows: 5rem 1fr;
+  gap: 2rem;
+  background-color: $primary-color;
 }
 
+h2 {
+  color: $tertiary-color
+}
+
+
+
+/* HEADER */
 header {
-  @include fixed-components(head, row, $primary-color);
+  @include fixed-components(head, row, $secondary-color);
   align-items: center;
+  gap: 10rem;
   width: 100vw;
   height: 5rem;
+  z-index: 2;
 }
 
-.btn {
-  width: 11rem;
-  height: 3rem;
-  padding: 1rem;
-  display: flex;
-  flex-direction: row;
-  gap: 2rem;
+.search-container{
+  width: 90%;
+  height: 2.5rem;
+  @include flex-config(row, $global-gap);
   align-items: center;
-  font-weight: bold;
-  text-decoration: none;
-  cursor: pointer;
-  
+  justify-content: center;
+  background-color: $tertiary-color;
+
+  .search__form-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+  }
 }
 
 
+input {
+  color: $secondary-color;
+  border: none;
+  background-color: $tertiary-color;
+  width: 93%;
+  padding: .1rem;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+::placeholder { 
+  color: $secondary-color;
+}
+
+
+
+/*Navigation bar*/
 
 nav {
   @include fixed-components(nav, column, $secondary-color);
+  border-top: $quaternary-color .1rem solid;
   top: 5rem;
-  
-
-  
+  height: 100vh;
+  color: $tertiary-color;
+  z-index: 1;
 }
+
+/* PAGES */
 
 main {
   grid-area: content;
+  padding: $global-padding;
+  @include flex-config(column, $global-gap);
+  justify-content: center;
+  align-items: center;
 }
 
-/* KEY FRAMES */
 
+
+/* POST */
+.post{
+  height: auto;
+  width: 40rem;
+  display: grid;
+  border-radius:  $border-radius;
+  grid-template-areas: 
+    "counter top"
+    "counter  content"
+    "counter info"
+  ;
+  grid-template-columns: auto 1fr;
+  background-color: $tertiary-color;
+  animation: moveInUp 1s ease-out;
+  @include hover-items($quaternary-color);
+}
+
+.post__counter-container {
+  grid-area: counter;
+  @include flex-config(column, 1rem);
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  border-radius: $border-radius 0 0 $border-radius;
+  height: 100%;
+  color: $tertiary-color;
+  background-color: $secondary-color;
+}
+
+.post__top-container {
+  grid-area: top;
+  padding: 2rem;
+
+  a {
+    color: $primary-color;
+    text-decoration: none;
+  }
+}
+
+.post__content-container {
+  grid-area: content;
+  @include flex-config(column, 1rem);
+  padding: 1.5rem;
+  align-items: center;
+}
+
+.post__content-text {
+  align-self: flex-start;
+}
+
+.post__info-container{
+  grid-area: info;
+  @include flex-config(row, $global-gap);
+  align-items: center;
+  justify-content: space-between;
+  padding: $global-padding;
+  text-align: center;
+
+  strong {
+    color: $primary-color
+  }
+}
+
+/* COMMENTS */
+
+.comments-container {
+  @include flex-config(column, $global-gap);
+  width: 100%;
+}
+
+.comment {
+  height: auto;
+  width: auto;
+  display: grid;
+  border-radius:  $border-radius;
+  grid-template-areas: 
+    "info"
+    "content"
+    "replies"
+  ;
+  padding: $global-padding;
+  color: $tertiary-color;
+  background-color: $secondary-color;
+  animation: moveInLeft 1s ease-out;
+}
+
+.comment__info-container{
+  grid-area: info;
+  @include flex-config(row, 1rem);
+  padding: 1rem;
+  strong {
+    color: $quaternary-color;
+  }
+  
+}
+
+.comment_content-container {
+  grid-area: content;
+  padding: 1rem;
+}
+
+.comment_replies-container {
+  grid-area: replies;
+}
+
+.reply {
+  margin-left: 5%;
+  border-left: $primary-color .1rem solid;
+  border-bottom: $primary-color .1rem dotted;
+  @include hover-items($quaternary-color);
+
+  &:last-child {
+    border-bottom: none
+  }
+}
+
+h1 {
+  color: $tertiary-color
+}
+
+/* BUTTONS */
+
+.btn {
+  @include flex-config(row, $global-gap);
+  align-items: center;
+  padding: 1rem;
+  gap: $global-gap;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 1s;
+}
+
+.btn--comments {
+  align-items: center;
+  height: 2rem;
+  padding: 1rem;
+  width: 5rem;
+  border: none;
+  color: $secondary-color;
+  transition: 1s;
+  background-color: $tertiary-color;
+  @include button-background('https://img.icons8.com/glyph-neue/32/131200/comments--v1.png', left);
+  @include change-color-icon-hover($quaternary-color, 'https://img.icons8.com/glyph-neue/32/893168/comments--v1.png');
+  border-radius: $border-radius;
+
+  &:hover{
+    color: $secondary-color;
+    font-weight: bold;
+  }
+
+  p {
+    margin-left: 1.5rem;
+  }
+}
+
+.btn--search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 100%;
+  border: none;
+  animation: moveInLeft 1s ease-out;
+  background-color: $tertiary-color;
+  @include button-background('https://img.icons8.com/ios-glyphs/32/893168/search--v1.png', center);
+  @include change-color-icon-hover($quaternary-color, 'https://img.icons8.com/ios-glyphs/32/131200/search--v1.png');
+}
+
+.btn--nav {
+  background-color: $primary-color;
+  color: $tertiary-color;
+  border: $tertiary-color .1rem solid;
+  animation: moveInLeft 1s ease-out;
+  font-weight: 600;
+  border-radius: 1.5rem;
+  width: 11rem;
+  height: 3rem;
+  &:hover {
+    background-color: $tertiary-color;
+    color: $secondary-color;
+    border: $primary-color .1rem solid;
+  }
+
+  &:active {
+    background-color: $secondary-color;
+  }
+}
+
+.visible{
+  display: inline-flex;
+}
+
+.hidden {
+  display: none;
+}
+
+
+/* KEY FRAMES */
 @keyframes moveInRight {
   0% {
       opacity: 0;
