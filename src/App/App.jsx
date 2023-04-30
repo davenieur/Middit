@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { CommentsPage } from '../components/pages/CommentsPage/CommentsPage';
 import { NavBar } from '../components/NavBar/NavBar';
-import { TopicPage } from '../components/TopicPage/TopicPage';
+import { TopicPage } from '../components/pages/TopicPage/TopicPage'
 import { Header } from '../components/Header/Header';
 import { NotFound } from '../components/pages/NotFound/NotFound';
 import '../App.scss';

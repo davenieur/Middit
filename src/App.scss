@@ -2,19 +2,19 @@
 $primary-color: #893168;
 $secondary-color: #131200;
 $tertiary-color: #EAEAEA;
-$quaternary-color: #FFC5F0;
+$quaternary-color: #e935b9;
 $border-radius: 2rem;
+$gap: 2rem;
+$padding: 2rem;
 
-@mixin flex-display($direction, $gap-number){
+@mixin fixed-components($area,$direction,$color){
+  grid-area: $area;
+  position: fixed;
+  background-color: $color;
   display: flex;
   flex-direction: $direction;
-  gap: $gap-number;
-}
-
-@mixin flex-single-element {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  gap: $gap;
+  padding: $padding;
 }
 
 @mixin button-background($url, $position){
@@ -44,313 +44,50 @@ $border-radius: 2rem;
   box-sizing: border-box;
 }
 
-body {
-  font-size: 1rem;
-}
-
-strong {
-  color: $quaternary-color;
-}
-
-a {
-  text-decoration: none;
-  color: $quaternary-color;
-  cursor: pointer;
-}
-
-h2 {
-  color: $tertiary-color;
-  background-color: $primary-color;
-  padding: 2rem;
-  width: 60%;
-  text-align: center;
-  border-radius: $border-radius;
-}
-
 #page{
   display: grid;
-  grid-template-areas: 
-    "head head "
-    "nav  content "
-  ;
-  grid-template-columns: 16rem 1fr;
-  grid-template-rows: 5rem 1fr;
   gap: 2rem;
-  background-color: $tertiary-color;
+  grid-template-areas: 
+    "head head"
+    "nav content";
+  grid-template-columns: 10rem 1fr;
+  grid-template-rows: 5rem 1fr;
 }
 
 header {
-  grid-area: head;
-  position: fixed;
-  @include flex-display(row, 2);
-  
+  @include fixed-components(head, row, $primary-color);
   align-items: center;
-  width: 100%;
-  padding: 1rem;
-  background-color: $primary-color;
-  z-index: 2;
-}
-
-.header__logo-box {
-  cursor: pointer;
-  width: 100%;
-  height: auto;
-}
-
-
-/*NAV*/
-
-nav {
-  grid-area: nav;
-  height: 100vh;
-  padding: 3rem;
-  position: fixed;
-  top: 5rem;
-
-  background-color: $secondary-color;
-  z-index: 1;
-  @include flex-display(column, 2rem);
-
-  h5 {
-    color: $tertiary-color;
-  }
-
+  width: 100vw;
+  height: 5rem;
 }
 
 .btn {
-  @include flex-display(row, 2rem);
-  text-decoration: none;
-  cursor: pointer;
-  border-radius: $border-radius;
+  width: 11rem;
   height: 3rem;
   padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
   align-items: center;
-  transition: 1s;
-}
-
-.btn--nav {
-  background-color: $primary-color;
-  width: 11rem;
-  color: $tertiary-color;
-  border: $tertiary-color .1rem solid;
-  animation: moveInLeft 1s ease-out;
-  font-weight: 600;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
   
-  &:hover {
-    background-color: $tertiary-color;
-    color: $secondary-color;
-    border: $primary-color .1rem solid;
-  }
-  &:active {
-    background-color: $secondary-color;
-  }
 }
 
-.btn--search {
-  @include flex-single-element;
-  width: 2.5rem;
-  height: 100%;
-  border: none;
-  animation: moveInLeft 1s ease-out;
-  background-color: $tertiary-color;
-  @include button-background('https://img.icons8.com/ios-glyphs/32/893168/search--v1.png', center);
-  @include change-color-icon-hover($quaternary-color, 'https://img.icons8.com/ios-glyphs/32/131200/search--v1.png');
+
+
+nav {
+  @include fixed-components(nav, column, $secondary-color);
+  top: 5rem;
+  
+
+  
 }
-
-.btn--comments {
-  @include flex-single-element;
-  align-items: center;
-  height: 2rem;
-  padding: .5rem;
-  justify-content: left;
-  border: none;
-  color: $tertiary-color;
-  transition: 1s;
-  background-color: $secondary-color;
-  @include button-background('https://img.icons8.com/glyph-neue/32/FFC5F0/comments--v1.png', left);
-  @include change-color-icon-hover($quaternary-color, 'https://img.icons8.com/glyph-neue/32/893168/comments--v1.png');
-
-  &:hover{
-    color: $secondary-color;
-    font-weight: bold;
-  }
-
-  p {
-    margin-left: 2rem;
-  }
-}
-
-/* MAIN */
 
 main {
-  @include flex-display(column, 2rem);
-  padding: 2rem;
-  justify-content: center;
-  align-items: center;
   grid-area: content;
-  
-  
 }
-
-
-
-.topics-page {
-  @include flex-display(column, 2rem);
-  padding: 1rem 2rem;
-  animation: moveInUp .5s ease-in;
- 
-}
-
-
-
-
-/* SEARCH */
-
-.search-container{
-  flex-shrink: 1;
-  width: 30%;
-  height: 2.5rem;
-  @include flex-display(row, 0rem);
-  background-color: $tertiary-color;
-  .search__form-container{
-    @include flex-single-element;
-    width: 93%;
-    height: 100%;
-  }
-}
-
-input, input:hover, input:focus {
-  border: none;
-}
-
-input {
-  color: $secondary-color;
-  color: $secondary-color;
-  width: 93%;
-  padding: .1rem;
-  background-color: $tertiary-color;
-}
-
-input:focus {
-  outline: none;
-}
-
-::placeholder { 
-  color: $secondary-color;
-  opacity: 0.8;
-}
-
-.topic-grid-container{
-  @include flex-display(column, 2rem);
-  animation: moveInRight .5s ease-in;
-  justify-content: center;
-  align-items: center
-
-}
-
-
-/*POST*/
-
-.post{
-  height: auto;
-  width: 50%;
-  display: grid;
-  border-radius: $border-radius;
-  grid-template-areas: 
-    "counter top"
-    "counter  content"
-    "counter info"
-  ;
-  grid-template-columns: auto 1fr;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
-  gap: 2rem;
-  
-  color: $tertiary-color;
-  background-color: $secondary-color;
-
-  @include hover;
-}
-
-.post__counter-container{
-  grid-area: counter;
-  @include flex-display(column, 2rem);
-  align-items: center;
-  justify-content: center;
-
-}
-
-.post__top-container {
-  grid-area: top;
-}
-
-
-.post__info-container {
-  grid-area: info;
-  @include flex-display(row, 2rem);
-  align-items: center;
-}
-
-
-.post__content-container{
-  @include flex-display(column, 2rem)
-}
-
-.post__content-img{
-  width: auto;
-  height: auto;
-  img {
-    width: 100%;
-    height: auto;
-  }
-}
-
-
-/* Comments */
-
-.comments-page{
-  width: 95%;
-  
-}
-
-.comments-container {
-  @include flex-display(column, 2rem);
-  grid-area: comments;
-  width: 100%;
-  padding: 2rem ;
-  transition: all .75s;
-
-}
-
-.comment{
-  display: grid;
-  grid-template-areas: 
-    "info info"
-    "content content"
-    "replies replies"
-  ;
-  gap: 1rem;
-  padding: 2rem;
-  background-color: $secondary-color;
-  color: $tertiary-color;
-  border-left:$quaternary-color .2rem solid;
-  border-radius: $border-radius;
-}
-
-.comment__info-container {
-  @include flex-display(row, 2rem);
-  grid-area: info;
-}
-
-.comment_content-container{
-  grid-area:  content;
-  text-align: justify;
-}
-
-
-
-
 
 /* KEY FRAMES */
 

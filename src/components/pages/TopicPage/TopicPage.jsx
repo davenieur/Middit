@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
-import { useFetchPosts } from "../../hooks/useFetchPosts";
-import { Post } from "../Post/Post"
-import { Loading } from "../Loading/Loading";
+import { useFetchPosts } from "../../../hooks/useFetchPosts";
+import { Post } from "../../Post/Post"
+import { Loading } from "../../Loading/Loading";
 
 export const TopicPage =() => {
     const { topic } = useParams();
