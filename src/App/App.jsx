@@ -14,7 +14,7 @@ export default function App() {
         <Header />
         <NavBar />
 
-        <Routes >
+        <Routes basename="/popular">
             <Route path="/" >
               <Route path="notfound" element={<NotFound />}/>
               <Route path=":topic" element= {<TopicPage />}/>

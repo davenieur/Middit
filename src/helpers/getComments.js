@@ -15,8 +15,7 @@ export const getComments = async ( subreddit, id  ) => {
             author: comment.author,
             body: comment.body,
             created: comment.created,
-            replies: typeof comment.replies === "string" ? [] : comment.replies.data.children.filter(element => element.kind === 't1'),
-            score: comment.score
+            replies: comment.replies
         }));
         
         /*GET POST INFO*/

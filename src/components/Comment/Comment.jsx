@@ -15,23 +15,19 @@ export const Comment = ({ author, body, created, replies, isReply }) => {
                 <p>{body}</p>
             </div>
             {
-                Object.entries(replies).length > 0 ? (
-                    <div className="comment_replies-container">
-                        {   
-                            replies.length > 0 ? 
-                            replies.map( ( reply, index ) => {
-                                return(
-                                    <Comment 
-                                        { ...reply.data }
-                                        key = {index}
-                                        isReply = {true}
-                                    />
-                                )
-                            })
-                            : null
-                        } 
-                    </div>
-                ) : null
+                typeof replies !== "string" ?  
+                    
+                    replies.data.children.filter(element => element.kind === 't1').map((reply, index) => {
+                        return(
+                            <Comment 
+                                {...reply.data}
+                                key = {index}
+                                isReply={true}
+                            />
+
+                        )    
+                    })   
+                :null  
             }
         </div>
     )
@@ -40,6 +36,6 @@ export const Comment = ({ author, body, created, replies, isReply }) => {
 Comment.propTypes = {
     author: PropTypes.string.isRequired,
     body: PropTypes.string.isRequired,
-    created: PropTypes.number.isRequired,
-    replies: PropTypes.array.isRequired,
+    created: PropTypes.number.isRequired
+    
 }

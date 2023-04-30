@@ -2,6 +2,9 @@
 
 export const Loading = () => {
     return(
-        <h3>Loading...</h3>
+        <main className="loading">
+            <div className="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+        </main>
+        
     )
 } 

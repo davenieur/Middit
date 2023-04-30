@@ -1,5 +1,4 @@
 
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { utcToDate } from "../../helpers/utcToDate";
 import { checkIfIsImage } from "../../helpers/checkImages";
@@ -7,7 +6,7 @@ import PropTypes from 'prop-types';
 
 
 export const Post = ( { id, title, author, subreddit, created, is_video, video_src, img_src, num_comments, score, commentsVisible } ) => {
-
+    console.log(img_src)
     const navigate = useNavigate();
     
     const handleClick = e => {
@@ -38,23 +37,12 @@ export const Post = ( { id, title, author, subreddit, created, is_video, video_s
                             <source src={video_src} type="video/mp4" />
                             Your browser does not support the video tag
                         </video>
-                    ) : null
+                    ) : checkIfIsImage(img_src) ? <img  src={img_src} alt={img_src} className="post-image"/> : null
                 }    
-                {
-                    checkIfIsImage(img_src) ? (
-                        <div className="post__content-img">  
-                            <img  src="{img_src}" alt="" />
-                        </div> 
-                    ) : null
-                }
-                
             </div>
-
             <div className="post__info-container">
                 <p>Posted by <strong>{ author }</strong></p>
                 <p><strong>{utcToDate(created)}</strong> days ago</p>
-
-
                 <button  type='button' className={`btn btn--comments ${commentsVisible ? "visible" : "hidden" }` } onClick={handleClick}>
                     <p>{num_comments}</p>
                 </button>    
