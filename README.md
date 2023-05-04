@@ -28,7 +28,7 @@ $ npm start
 ```
 
 ## Check online
-https://middit-dpr.netlify.app/popular
+https://middit-dpr.netlify.app
 
 ## Future versions
 For this project, I plan to implement Redux in the future to manage the state of the application and simplify the data flow between components. Additionally, there is a need to design and optimize the application for mobile devices and improve its accessibility to make it more user-friendly and inclusive.
