@@ -19,7 +19,7 @@ export const  NavButton = ( { topic, handleClick, iconName } ) => {
         >
             <button 
                 type='button' 
-                className='btn btn--nav' 
+                className='btn--nav' 
                 onMouseOver={e => handleOnMouseOver()}
                 onMouseOut={e => handleOnMouseOut()}
                 onClick={e => handleClick(topic)}

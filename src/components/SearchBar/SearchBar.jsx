@@ -1,14 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const SearchBar = () => {
     const [ inputValue, setInputValue ] = useState('');
     const navigate = useNavigate();
-    
-    useEffect(() => {
-        navigate('/popular');
-    }, []);
-
 
     const onInputChange = e => {
         setInputValue(e.target.value);

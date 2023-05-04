@@ -22,7 +22,7 @@ export const TopicPage =() => {
                     )       
                     : (
                         <main> 
-                            <h2>{ topic.toUpperCase() }</h2>
+                            <h1>{ topic.toUpperCase() }</h1>
                             {
                             posts.map( post => {
                                 return(

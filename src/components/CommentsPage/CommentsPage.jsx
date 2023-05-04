@@ -16,12 +16,10 @@ export const CommentsPage =() => {
 
     return(
         <>
-           {     loadingContent ?  (<Loading />)  : (
+           {    loadingContent ?  (<Loading />)  : (
                     <main> 
                         <Post {...post}/>
                         <h1>Comments</h1>
-                        <div className= "comments-container">
-                            
                             { 
                                 comments.map((comment, index) => {
                                     return(
@@ -35,9 +33,6 @@ export const CommentsPage =() => {
                                     
                                 })
                             }
-                
-                        </div>
-                          
                     </main>
                 )  
             }

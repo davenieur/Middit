@@ -13,8 +13,7 @@ $global-gap: 2rem;
   flex-direction: $direction;
 }
 
-@mixin fixed-components($area,$direction,$color){
-  grid-area: $area;
+@mixin fixed-components($direction,$color){
   position: fixed;
   background-color: $color;
   padding: $global-padding;
@@ -48,33 +47,20 @@ $global-gap: 2rem;
   box-sizing: border-box;
 }
 
-*body {
+body {
   background-color: $primary-color;
 }
 
-#page{
-  display: grid;
-  gap: $global-gap;
-  grid-template-areas: 
-    "head head"
-    "nav content";
-  grid-template-columns: 16rem 1fr;
-  grid-template-rows: 5rem 1fr;
-  gap: 2rem;
-  
-}
-
-h2 {
+h1,h2 {
   color: $tertiary-color
 }
 
 /* HEADER */
 header {
-  @include fixed-components(head, row, $secondary-color);
+  @include fixed-components(row, $secondary-color);
   justify-content: space-between;
   align-items: center;
-  gap: 10rem;
-  width: 100vw;
+  width: 100%;
   height: 5rem;
   z-index: 2;
 }
@@ -117,10 +103,10 @@ input {
 /*NAVIGATION BAR*/
 
 nav {
-  @include fixed-components(nav, column, $secondary-color);
+  @include fixed-components(column, $secondary-color);
   border-top: $quaternary-color .1rem solid;
   top: 5rem;
-  height: 100vh;
+  height: 100%;
   color: $tertiary-color;
   z-index: 1;
 }
@@ -128,7 +114,11 @@ nav {
 /* PAGES */
 
 main {
-  grid-area: content;
+  position: relative;
+  width: 70%;
+  top: 7rem;
+  left: 20%;
+  right: 20%;
   padding: $global-padding;
   @include flex-config(column, $global-gap);
   justify-content: center;
@@ -136,7 +126,10 @@ main {
 }
 
 .loading {
-  height: 100vh;
+  height: 100%;
+  position: relative;
+  top: 20rem;
+
 }
 
 .lds-spinner {
@@ -233,7 +226,6 @@ main {
     opacity: 0;
   }
 }
-
 
 
 /* POST */
@@ -361,13 +353,10 @@ main {
   }
 }
 
-h1 {
-  color: $tertiary-color
-}
 
 /* BUTTONS */
 
-.btn {
+button {
   @include flex-config(row, $global-gap);
   align-items: center;
   padding: 1rem;

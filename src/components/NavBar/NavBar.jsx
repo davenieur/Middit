@@ -11,10 +11,10 @@ export const NavBar = () =>{
 
     return( 
         <nav>
-            <h5>HOME</h5>
+            <h4>HOME</h4>
             <NavButton topic = 'Popular' handleClick = {handleClick} iconName = 'fire-element.png' />
             <hr />
-            <h5>FEEDS</h5>
+            <h4>FEEDS</h4>
             { 
                 topics.map((topic, index)=> {
                     return(
